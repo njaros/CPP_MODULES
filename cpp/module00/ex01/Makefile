@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fonebouc
+NAME = my_unforgettable_phonebook
 CC = g++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -18,9 +18,11 @@ PATH_SRCS = src
 PATH_OBJS = obj
 PATH_INCLUDES = includes
 
-LST_SRCS =
+LST_SRCS =	contact.cpp \
+			phonebook.cpp \
+			main.cpp
 LST_OBJS =	${LST_SRCS:.cpp=.o}
-LST_INCLUDES =	
+LST_INCLUDES =	phonebook.hpp
 
 SRC =		$(addprefix ${PATH_SRCS}/,${LST_SRCS})
 OBJS =		$(addprefix ${PATH_OBJS}/,${LST_OBJS})
@@ -41,7 +43,7 @@ clean :
 					rm -rf obj
 
 fclean :			clean
-					rm ${NAME}
+					rm -f ${NAME}
 
 re :				fclean all
 
