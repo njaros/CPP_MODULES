@@ -16,6 +16,8 @@
 # include <iostream>
 # include <cstring>
 # include <string.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 # define FIRSTNAME_ 1
 # define LASTNAME_ 2

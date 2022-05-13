@@ -51,7 +51,9 @@ int	main(void)
 {
 	int	i;
 
+	system("clear");
 	std::cout << std::endl;
 	i = routine();
 	std::cout << std::endl;
+	return (i);
 }
