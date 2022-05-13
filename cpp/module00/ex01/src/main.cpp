@@ -1,10 +1,10 @@
 
 #include "phonebook.hpp"
 
-int	main(void)
+int	routine(void)
 {
 	PhoneBook	redfish;
-	char		buffer[6];
+	std::string	buffer;
 	int			roll;
 	int			memUsed;
 
@@ -12,24 +12,34 @@ int	main(void)
 	roll = 0;
 	while (1)
 	{
-		std::cout << "You can type \"ADD\", \"SEARCH\", \"EXIT\"";
-		std::cout << " if you want to add a contact, search a contact or exit (not a contact) :";
-		std::cin >> buffer;
 		std::cout << std::endl;
-		if (!strcmp(buffer, "ADD"))
+		std::cout << "You can type \"ADD\", \"SEARCH\", \"EXIT\"";
+		std::cout << " if you want to add a contact, search a contact or exit (not a contact) : ";
+		std::getline(std::cin, buffer);
+		std::cout << std::endl;
+		if (!buffer.compare("ADD"))
 		{
 			redfish.ftAdd(roll);
 			if (roll == 7)
 				roll = 0;
 			else
 				roll++;
-			if (memUsed < 7)
+			if (memUsed < 8)
 				memUsed++;
 		}
-		else if (!strcmp(buffer, "SEARCH"))
+		else if (!buffer.compare("SEARCH"))
 			redfish.ftSearch(memUsed);
-		else if (!strcmp(buffer, "EXIT"))
+		else if (!buffer.compare("EXIT"))
 			return (0);
 	}
 	return (0);
+}
+
+int	main(void)
+{
+	int	i;
+
+	std::cout << std::endl;
+	i = routine();
+	std::cout << std::endl;
 }

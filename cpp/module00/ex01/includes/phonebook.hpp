@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 17:41:11 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/11 18:04:45 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/13 18:01:25 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <cstring>
+# include <string.h>
 
 # define FIRSTNAME_ 1
 # define LASTNAME_ 2
@@ -29,9 +30,8 @@ class Contact
 		Contact(void); //Constructeur
 		~Contact(void); //Destructeur
 
-		void	meminit(void);
-		void	set_value(int context, char *str);
-		void	get_value(int context)	const;
+		void	set_value(int context, std::string str);
+		char	*get_value(int context);
 
 	private :
 
@@ -52,10 +52,11 @@ class PhoneBook
 		~PhoneBook(void);
 
 		void	ftAdd(int i);
-		void	ftSearch(int i)	const;
+		void	ftSearch(int i);
 
 	private :
 
+		void	streamRepertory(int i);
 		Contact	_contact[8];
 
 };
