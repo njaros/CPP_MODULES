@@ -6,11 +6,11 @@
 #    By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/11 16:01:52 by njaros            #+#    #+#              #
-#    Updated: 2022/05/11 18:05:47 by njaros           ###   ########lyon.fr    #
+#    Updated: 2022/05/13 18:37:42 by njaros           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 
+NAME = exe
 CC = g++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -18,9 +18,10 @@ PATH_SRCS = src
 PATH_OBJS = obj
 PATH_INCLUDES = includes
 
-LST_SRCS =
+LST_SRCS =	tests.cpp \
+			Account.cpp
 LST_OBJS =	${LST_SRCS:.cpp=.o}
-LST_INCLUDES =	
+LST_INCLUDES =	Account.hpp
 
 SRC =		$(addprefix ${PATH_SRCS}/,${LST_SRCS})
 OBJS =		$(addprefix ${PATH_OBJS}/,${LST_OBJS})
