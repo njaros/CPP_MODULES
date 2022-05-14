@@ -18,11 +18,12 @@ PATH_SRCS = src
 PATH_OBJS = obj
 PATH_INCLUDES = includes
 
-LST_SRCS =	contact.cpp \
-			phonebook.cpp \
-			main.cpp
+LST_SRCS =	Contact.cpp \
+			Phonebook.cpp \
+			main.cpp \
+			utils.cpp
 LST_OBJS =	${LST_SRCS:.cpp=.o}
-LST_INCLUDES =	phonebook.hpp
+LST_INCLUDES =	Phonebook.hpp
 
 SRC =		$(addprefix ${PATH_SRCS}/,${LST_SRCS})
 OBJS =		$(addprefix ${PATH_OBJS}/,${LST_OBJS})

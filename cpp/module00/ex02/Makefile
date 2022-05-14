@@ -42,7 +42,7 @@ clean :
 					rm -rf obj
 
 fclean :			clean
-					rm ${NAME}
+					rm -f ${NAME}
 
 re :				fclean all
 

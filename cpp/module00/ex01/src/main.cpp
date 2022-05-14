@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 
-#include "phonebook.hpp"
+#include "Phonebook.hpp"
 
 int	routine(void)
 {
@@ -27,7 +27,12 @@ int	routine(void)
 		std::cout << std::endl;
 		std::cout << "You can type \"ADD\", \"SEARCH\", \"EXIT\"";
 		std::cout << " if you want to add a contact, search a contact or exit (not a contact) : ";
-		std::getline(std::cin, buffer);
+		/*if (!std::getline(std::cin, buffer))
+		{
+			std::cin.clear();
+			clearerr(stdin);
+		}*/
+		secureGetline(&buffer);
 		std::cout << std::endl;
 		if (!buffer.compare("ADD"))
 		{
@@ -44,7 +49,6 @@ int	routine(void)
 		else if (!buffer.compare("EXIT"))
 			return (0);
 	}
-	return (0);
 }
 
 int	main(void)

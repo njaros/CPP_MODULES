@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 
-#include "phonebook.hpp"
+#include "Phonebook.hpp"
 
 PhoneBook::PhoneBook(void)
 {
@@ -30,19 +30,19 @@ void	PhoneBook::ftAdd(int i)
 	std::string	buffer;
 
 	std::cout << "Enter the contact's first name : ";
-	std::getline(std::cin,buffer);
+	secureGetline(&buffer);
 	this->_contact[i].set_value(FIRSTNAME_, buffer);
 	std::cout << std::endl << "Enter the contact's last name : ";
-	std::getline(std::cin,buffer);
+	secureGetline(&buffer);
 	this->_contact[i].set_value(LASTNAME_, buffer);
 	std::cout << std::endl << "Enter the contact's nickname : ";
-	std::getline(std::cin,buffer);
+	secureGetline(&buffer);
 	this->_contact[i].set_value(NICKNAME_, buffer);
 	std::cout << std::endl << "Enter the contact's phone number : ";
-	std::getline(std::cin,buffer);
+	secureGetline(&buffer);
 	this->_contact[i].set_value(PHONENUMBER_, buffer);
 	std::cout << std::endl << "Enter the contact's darkest secret : ";
-	std::getline(std::cin,buffer);
+	secureGetline(&buffer);
 	this->_contact[i].set_value(DARKESTSECRET_, buffer);
 	std::cout << std::endl << "New contact added" << std::endl;
 	return;
@@ -63,7 +63,7 @@ void	PhoneBook::streamRepertory(int i)
 	while (++j < i)
 	{
 		val = 0;
-		std::cout << "|" << "         " << j + 1 << "|";
+		std::cout << "|" << "     " << j + 1 << "    " << "|";
 		while (++val <= 3)
 		{
 			k = 10;
@@ -96,12 +96,12 @@ void	PhoneBook::ftSearch(int i)
 	}
 	this->streamRepertory(i);
 	std::cout << "Enter the contact's index to get more details : ";
-	std::getline(std::cin, buffer);
+	secureGetline(&buffer);
 	while (buffer.size() > 1 || buffer.compare("1") < 0 || buffer.data()[0] > i + '0')
 	{
 		std::cout << std::endl << "you said : " << buffer;
 		std::cout << std::endl << "I didn't anderstand, please retry : ";
-		std::getline(std::cin, buffer);
+		secureGetline(&buffer);
 	}
 	index = buffer[0] - '0' - 1;
 	std::cout << std::endl << "First name : " << this->_contact[index].get_value(FIRSTNAME_);
