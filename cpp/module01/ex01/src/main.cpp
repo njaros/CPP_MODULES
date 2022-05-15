@@ -1,11 +1,18 @@
 #include "Zombie.hpp"
 
-int	main( void )
+int	main( int ac, char **av )
 {
-	Zombie*	Michel;
+	Zombie*	michel;
+	int		i;
+	int		n;
 
-	Michel = zombieHorde(5, "Michel");
-
-	delete Michel;
+	if (ac != 3)
+		return (0);
+	i = -1;
+	n = atoi(av[1]);
+	michel = zombieHorde(n, av[2]);
+	while (++i < n)
+		michel[i].announce();
+	delete [] michel;
 	return (0);
 }
