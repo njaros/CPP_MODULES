@@ -14,6 +14,14 @@
 
 Harl::Harl( void )
 {
+	this->ptrDebug = &this->debug;
+	this->ptrInfo = &this->info;
+	this->ptrWarning = &this->warning;
+	this->ptrError = &this->error;
+	this->ptrs[0] = this->ptrDebug;
+	this->ptrs[1] = this->ptrInfo;
+	this->ptrs[2] = this->ptrWarning;
+	this->ptrs[3] = this->ptrError;
 	return;
 }
 
@@ -24,8 +32,7 @@ Harl::~Harl( void )
 
 void	Harl::complain( std::string level )
 {
-	
-	&this->debug[level]();
+	this->ptrs[atoi(level)];
 }
 
 void	Harl::debug( void )

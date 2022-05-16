@@ -26,6 +26,11 @@ class Harl
 	
 	private :
 
+		void	*ptrs[4];
+		void	*(*ptrDebug)( void );
+		void	*(*ptrInfo)( void );
+		void	*(*ptrWarning)( void );
+		void	*(*ptrError)( void );		
 		void	debug( void );
 		void	info( void );
 		void	warning( void );
