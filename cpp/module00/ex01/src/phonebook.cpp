@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:28:41 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/13 18:28:42 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/16 15:51:17 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,36 +25,46 @@ PhoneBook::~PhoneBook(void)
 	return;
 }
 
+void	PhoneBook::getNotEmptyLine(std::string *buffer)
+{
+	secureGetline(buffer);
+	while (buffer->empty())
+	{
+		std::cout << std::endl << "You can't let nothing, retry : ";
+		secureGetline(buffer);
+	}
+}
+
 void	PhoneBook::ftAdd(int i)
 {
 	std::string	buffer;
 
 	std::cout << "Enter the contact's first name : ";
-	secureGetline(&buffer);
+	this->getNotEmptyLine(&buffer);
 	this->_contact[i].set_value(FIRSTNAME_, buffer);
 	std::cout << std::endl << "Enter the contact's last name : ";
-	secureGetline(&buffer);
+	this->getNotEmptyLine(&buffer);
 	this->_contact[i].set_value(LASTNAME_, buffer);
 	std::cout << std::endl << "Enter the contact's nickname : ";
-	secureGetline(&buffer);
+	this->getNotEmptyLine(&buffer);
 	this->_contact[i].set_value(NICKNAME_, buffer);
 	std::cout << std::endl << "Enter the contact's phone number : ";
-	secureGetline(&buffer);
+	this->getNotEmptyLine(&buffer);
 	this->_contact[i].set_value(PHONENUMBER_, buffer);
 	std::cout << std::endl << "Enter the contact's darkest secret : ";
-	secureGetline(&buffer);
+	this->getNotEmptyLine(&buffer);
 	this->_contact[i].set_value(DARKESTSECRET_, buffer);
 	std::cout << std::endl << "New contact added" << std::endl;
 	return;
 }
 
-// I only seen after I finished my program that I could use iomanip library to do the next fonction easier.
-// But I used my brain to did it so I prefer to keep it like this for the originality.
+// I only seen after I finished my program that I could use iomanip library
+// or cout.fill + cout.widht to do the next fonction easier.
+// I keep it like this because it works.
 void	PhoneBook::streamRepertory(int i)
 {
 	int	j;
 	int	val;
-	int	k;
 	int	strLenght;
 
 	j = -1;
@@ -66,17 +76,13 @@ void	PhoneBook::streamRepertory(int i)
 		std::cout << "|" << "     " << j + 1 << "    " << "|";
 		while (++val <= 3)
 		{
-			k = 10;
-			strLenght = strlen(this->_contact[j].get_value(val));
+			strLenght = this->_contact[j].get_value(val).length();
+			std::cout << std::setw(10);
+			std::cout << std::right;
 			if (strLenght > 10)
-				strLenght = 10;
-			while (--k >= 0)
-			{
-				if (k >= strLenght)
-					std::cout << " ";
-				else
-					std::cout << this->_contact[j].get_value(val)[strLenght - (k + 1)];
-			}
+				std::cout << this->_contact[j].get_value(val).substr(0, 9).append(".");
+			else
+				std::cout << this->_contact[j].get_value(val);
 			std::cout << "|";
 		}
 		std::cout << std::endl;

@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 17:41:11 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/13 18:28:37 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/16 16:15:31 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 # define PHONEBOOK_H
 
 # include <iostream>
-# include <cstring>
 # include <string.h>
-# include <stdlib.h>
-# include <unistd.h>
 # include <stdio.h>
+# include <iomanip>
 
 # define FIRSTNAME_ 1
 # define LASTNAME_ 2
@@ -33,17 +31,18 @@ class Contact
 		Contact(void); //Constructeur
 		~Contact(void); //Destructeur
 
-		void	set_value(int context, std::string str);
-		char	*get_value(int context);
+		void		set_value(int context, std::string str);
+		std::string	get_value(int context);
 
 	private :
 
-		char	_firstName[32];
-		char	_lastName[32];
-		char	_nickName[32];
-		// phoneNumber is char[] because the user entry is char[]
-		char	_phoneNumber[32];
-		char	_darkestSecret[512];
+		// I could use std::string instead of char[]
+		// anyway I learned a lot about string member fonctions to convert to char[].
+		std::string	_firstName;
+		std::string	_lastName;
+		std::string	_nickName;
+		std::string	_phoneNumber;
+		std::string	_darkestSecret;
 	
 };
 
@@ -60,10 +59,13 @@ class PhoneBook
 	private :
 
 		void	streamRepertory(int i);
+		void	getNotEmptyLine(std::string *buffer);
 		Contact	_contact[8];
 
 };
 
+
+// A secure fonction to counter ctrl + D
 void	secureGetline(std::string *buffer);
 
 #endif

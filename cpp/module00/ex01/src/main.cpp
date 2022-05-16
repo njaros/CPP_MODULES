@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:28:47 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/13 18:28:48 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/16 09:10:12 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,6 @@ int	routine(void)
 		std::cout << std::endl;
 		std::cout << "You can type \"ADD\", \"SEARCH\", \"EXIT\"";
 		std::cout << " if you want to add a contact, search a contact or exit (not a contact) : ";
-		/*if (!std::getline(std::cin, buffer))
-		{
-			std::cin.clear();
-			clearerr(stdin);
-		}*/
 		secureGetline(&buffer);
 		std::cout << std::endl;
 		if (!buffer.compare("ADD"))

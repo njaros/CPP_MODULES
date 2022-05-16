@@ -6,12 +6,11 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 16:05:11 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/11 16:27:10 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/16 15:15:20 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <ctype.h>
 
 int main(int ac, char **av)
 {
@@ -30,7 +29,7 @@ int main(int ac, char **av)
 		{
 			j = -1;
 			while (av[i][++j])
-				std::cout << (char)toupper(av[i][j]);
+				std::cout << (char)std::toupper(av[i][j]);
 		}
 	}
 	std::cout << std::endl;

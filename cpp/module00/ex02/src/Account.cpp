@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:39:58 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/13 18:40:55 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/16 17:14:53 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,56 @@ int Account::_totalAmount;
 int Account::_totalNbDeposits;
 int Account::_totalNbWithdrawals;
 
-Account::Account( int initial_deposit ) : _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0)
+Account::Account( void ) : _amount(0), _nbDeposits(0), _nbWithdrawals(0)
 {
-	static int	index = 0;
-
-	this->_accountIndex = index;
+	this->_accountIndex = this->_nbAccounts;
 	this->_nbAccounts += 1;
-	this->_totalAmount += this->_amount;
-	if (index)
+	if (this->_nbAccounts - 1)
 		std::cout << std::endl;
 	this->_displayTimestamp();
-	std::cout << "index:" << index << ";amount:" << this->_amount << ";created";
-	index++;
+	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";created";
+}
+
+Account::Account( int initial_deposit ) : _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0)
+{
+	this->_accountIndex = this->_nbAccounts;
+	this->_nbAccounts += 1;
+	this->_totalAmount += this->_amount;
+	if (this->_nbAccounts - 1)
+		std::cout << std::endl;
+	this->_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";created";
 }
 
 Account::~Account( void )
 {
+	static int	trickSolve = 0;	//Ce tricks est nécessaire car l'exo a été conçu pour Linux et non pour Mac,
+								//En effet, Mac détruit les éléments dans le sens inverse de Linux, ce qui rend
+								//l'exercice infaisable.
+								//trickSolve me permet d'inverser toutes les valeurs des éléments avant les destructions.
+	int			i;
+	int			tot;
+	int			temp;
+	i = -1;
+	if (!trickSolve)
+	{
+		trickSolve = 1;
+		if (this->_accountIndex)
+		{
+			tot = this->_nbAccounts - 1;
+			while (++i < this->_nbAccounts / 2)
+			{
+				(this - i)->_accountIndex = i;
+				(this - (tot - i))->_accountIndex = tot - i;
+				temp = (this - i)->_amount;
+				(this - i)->_amount = (this - (tot - i))->_amount;
+				(this - (tot - i))->_amount = temp;
+			}
+		}
+	}
 	std::cout << std::endl;
 	this->_displayTimestamp();
+	this->_nbAccounts -= 1;
 	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";closed";
 }
 
@@ -112,6 +144,7 @@ void	Account::_displayTimestamp( void )
 	std::cout.width(2);
 	std::cout << timeinfo->tm_sec;
 	std::cout << "] ";
+	//std::cout << "[19920104_091532] ";
 }
 
 int	Account::getNbAccounts( void )
