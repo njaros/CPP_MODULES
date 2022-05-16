@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/05/16 17:25:55 by njaros            #+#    #+#              #
-#    Updated: 2022/05/16 17:25:56 by njaros           ###   ########lyon.fr    #
+#    Created: 2022/05/16 19:09:19 by njaros            #+#    #+#              #
+#    Updated: 2022/05/16 19:11:03 by njaros           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Hello_brain
+NAME = Harl
 CC = g++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -18,9 +18,10 @@ PATH_SRCS = src
 PATH_OBJS = obj
 PATH_INCLUDES = includes
 
-LST_SRCS =	main.cpp
+LST_SRCS =	main.cpp \
+			Harl.cpp
 LST_OBJS =	${LST_SRCS:.cpp=.o}
-LST_INCLUDES =
+LST_INCLUDES =	Harl.hpp
 
 SRC =		$(addprefix ${PATH_SRCS}/,${LST_SRCS})
 OBJS =		$(addprefix ${PATH_OBJS}/,${LST_OBJS})

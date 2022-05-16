@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 11:11:08 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/16 11:32:53 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/16 17:20:37 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 Weapon::Weapon( std::string type ) : _type(type)
 {
-	std::cout << this->_type << " created." << std::endl;
 	return;
 }
 

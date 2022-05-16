@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/05/16 17:25:55 by njaros            #+#    #+#              #
-#    Updated: 2022/05/16 17:25:56 by njaros           ###   ########lyon.fr    #
+#    Created: 2022/05/16 17:26:07 by njaros            #+#    #+#              #
+#    Updated: 2022/05/16 18:00:02 by njaros           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Hello_brain
+NAME = mySed
 CC = g++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 

@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/16 10:21:53 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/16 17:20:47 by njaros           ###   ########lyon.fr   */
+/*   Created: 2022/05/16 19:14:14 by njaros            #+#    #+#             */
+/*   Updated: 2022/05/16 19:26:20 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#ifndef HARL_HPP
+# define HARL_HPP
 
-HumanB::HumanB( std::string name ) : _name(name)
-{
-	this->_weapon = NULL;
-	return;
-}
+#include <iostream>
+#include <stdlib.h>
 
-HumanB::~HumanB( void )
+class Harl
 {
-	return;
-}
+	public :
 
-void	HumanB::setWeapon( Weapon &weapon )
-{
-	this->_weapon = &weapon;
-}
+		Harl( void );
+		~Harl( void );
+		void	complain( std::string level );
+	
+	private :
 
-void	HumanB::attack( void )	const
-{
-	std::cout << this->_name << " attacks with their " << this->_weapon->getType() << std::endl;
-}
+		void	debug( void );
+		void	info( void );
+		void	warning( void );
+		void	error( void );
+
+};
+
+#endif
