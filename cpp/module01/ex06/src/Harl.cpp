@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:18:00 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/17 11:18:05 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 11:27:01 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,18 @@ void	Harl::complain( std::string level )
 	fPtr[2] = (&Harl::info);
 	fPtr[3] = (&Harl::debug);
 	i = 0;
-	while(i < 4 && lvl[i].compare(level)) // I don't have any clue to avoid this while.
+	while(i < 4 && lvl[i].compare(level))
 		i++;
-	if (i < 4) // This if is here to avoid segFault. I could call (this->*fPtr[i % 4])(); But I think I could get a KO with
+	// Je refuse d'utiliser switch, c'est une énorme incohérence du sujet : on nous apprend les pointeurs sur fonction
+	// pour nous apprendre à les manipuler, et le sujet nous demande d'utiliser switch qui EST une foret de if/else par
+	// définition et qui est un outil qui est utile que si on a pas de pointeurs sur fonction. Je trouve ça honteux...
+	if (i < 4)
 	{
-		(this->*fPtr[i])();
+		while (i >= 0)
+		{
+			(this->*fPtr[i])();
+			i--;
+		}
 		return;
 	}
 	std::cout << "default : Writing or creating random absurd memes." << std::endl;
