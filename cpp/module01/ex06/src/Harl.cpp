@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:18:00 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/17 11:27:01 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 13:42:12 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ Harl::~Harl( void )
 	return;
 }
 
-void	Harl::complain( std::string level )
+//Je propose 2 solutions car le sujet peut être interprété de 2 façons différentes
+/*void	Harl::complain( std::string level ) //solution 1 : ma préférée
 {
 	void	(Harl::*fPtr[4])( void );
 	int	i;
@@ -40,9 +41,6 @@ void	Harl::complain( std::string level )
 	i = 0;
 	while(i < 4 && lvl[i].compare(level))
 		i++;
-	// Je refuse d'utiliser switch, c'est une énorme incohérence du sujet : on nous apprend les pointeurs sur fonction
-	// pour nous apprendre à les manipuler, et le sujet nous demande d'utiliser switch qui EST une foret de if/else par
-	// définition et qui est un outil qui est utile que si on a pas de pointeurs sur fonction. Je trouve ça honteux...
 	if (i < 4)
 	{
 		while (i >= 0)
@@ -53,6 +51,48 @@ void	Harl::complain( std::string level )
 		return;
 	}
 	std::cout << "default : Writing or creating random absurd memes." << std::endl;
+}*/
+
+void	Harl::complain( std::string level ) //solution 2
+{
+	void	(Harl::*fPtr[4])( void );
+	int		i;
+	std::string	lvl[] = {
+		"ERROR",
+		"WARNING",
+		"INFO",
+		"DEBUG"
+	};
+
+	fPtr[0] = (&Harl::error);
+	fPtr[1] = (&Harl::warning);
+	fPtr[2] = (&Harl::info);
+	fPtr[3] = (&Harl::debug);
+	i = 0;
+	while(i < 4 && lvl[i].compare(level))
+		i++;
+	while (i >= 0)
+	{
+		switch (i)
+		{
+			case 0 :
+				(this->*fPtr[0])();
+				break ;
+			case 1 :
+				(this->*fPtr[1])();
+				break ;
+			case 2 :
+				(this->*fPtr[2])();
+				break ;
+			case 3 :
+				(this->*fPtr[3])();
+				break ;
+			default :
+				std::cout << "default : Writing or creating random absurd memes." << std::endl;
+				i = 0;
+		}
+		i--;
+	}
 }
 
 void	Harl::debug( void )

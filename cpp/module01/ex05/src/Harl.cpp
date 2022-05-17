@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:18:00 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/17 11:18:05 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/17 13:35:16 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ Harl::~Harl( void )
 	return;
 }
 
-void	Harl::complain( std::string level )
+//Je propose 2 solutions car le sujet peut être interprété de 2 façons différentes
+void	Harl::complain( std::string level ) //solution 1 : ma préférée
 {
 	void	(Harl::*fPtr[4])( void );
-	int	i;
+	int		i;
 	std::string	lvl[] = {
 		"ERROR",
 		"WARNING",
@@ -38,15 +39,52 @@ void	Harl::complain( std::string level )
 	fPtr[2] = (&Harl::info);
 	fPtr[3] = (&Harl::debug);
 	i = 0;
-	while(i < 4 && lvl[i].compare(level)) // I don't have any clue to avoid this while.
+	while(i < 4 && lvl[i].compare(level))
 		i++;
-	if (i < 4) // This if is here to avoid segFault. I could call (this->*fPtr[i % 4])(); But I think I could get a KO with
+	if (i < 4) // This if is here to avoid segFault.
 	{
 		(this->*fPtr[i])();
 		return;
 	}
 	std::cout << "default : Writing or creating random absurd memes." << std::endl;
 }
+
+/*void	Harl::complain( std::string level ) //solution 2
+{
+	void	(Harl::*fPtr[4])( void );
+	int		i;
+	std::string	lvl[] = {
+		"ERROR",
+		"WARNING",
+		"INFO",
+		"DEBUG"
+	};
+
+	fPtr[0] = (&Harl::error);
+	fPtr[1] = (&Harl::warning);
+	fPtr[2] = (&Harl::info);
+	fPtr[3] = (&Harl::debug);
+	i = 0;
+	while(i < 4 && lvl[i].compare(level))
+		i++;
+	switch (i)
+	{
+		case 0 :
+			(this->*fPtr[0])();
+			break ;
+		case 1 :
+			(this->*fPtr[1])();
+			break ;
+		case 2 :
+			(this->*fPtr[2])();
+			break ;
+		case 3 :
+			(this->*fPtr[3])();
+			break ;
+		default :
+			std::cout << "default : Writing or creating random absurd memes." << std::endl;
+	}
+}*/
 
 void	Harl::debug( void )
 {
