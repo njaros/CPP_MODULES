@@ -13,9 +13,7 @@
 #ifndef HUMANA_HPP
 # define HUMANA_HPP
 
-#include <iostream>
-#include <string.h>
-#include "Weapon.hpp"
+#include "../includes/Weapon.hpp"
 
 class HumanA
 {

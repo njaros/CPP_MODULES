@@ -19,16 +19,27 @@ class Fixed
 {
 	public :
 
+		// Les constructeurs
+
 		Fixed( void );
 		Fixed( const Fixed &n );
 		Fixed( int const wut );
 		Fixed( float const wut );
+		
+		// Le destructeur
+
 		~Fixed( void );
+
+		// La surcharge d'operateur
+
+		Fixed	&operator=( Fixed const &n );
+		
+		// Geter, seter, autres...
+
 		float	toFloat( void )	const;
 		int		toInt( void )	const;
 		int		getRawBits( void )	const;
 		void	setRawBits( int const raw );
-		Fixed	&operator=( Fixed const &n );
 
 	private :
 
@@ -37,6 +48,6 @@ class Fixed
 
 };
 
-		std::ostream	&operator<<( std::ostream &o, Fixed const &f );
+	std::ostream	&operator<<( std::ostream &o, Fixed const &f );
 
 #endif

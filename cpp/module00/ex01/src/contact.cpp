@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "Phonebook.hpp"
+#include "../includes/Contact.hpp"
 
 Contact::Contact(void)
 {
