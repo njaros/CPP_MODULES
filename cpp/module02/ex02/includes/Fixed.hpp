@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:09:18 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/19 08:22:09 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/19 17:54:48 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,36 @@ class Fixed
 
 		~Fixed( void );
 
-		// La surcharge d'operateur
+		// Les opérateurs de surcharge arithmétiques
 
 		Fixed	&operator=( Fixed const &n );
+		Fixed	operator+( Fixed const &val );
+		Fixed	operator-( Fixed const &val );
+		Fixed	operator*( Fixed const &val );
+		Fixed	operator/( Fixed const &val );
+
+		// Les opérateurs de surcharge de comparaison
+
+		bool	operator>( Fixed const &rVal );
+		bool	operator<( Fixed const &rVal );
+		bool	operator>=( Fixed const &rVal );
+		bool	operator<=( Fixed const &rVal );
+		bool	operator==( Fixed const &rVal );
+		bool	operator!=( Fixed const &rVal );
+
+		// Les opérateurs de surcharge de post et pré incrémantation et décrémentation
+
+		Fixed	operator++( void );
+		Fixed	operator--( void );
+		Fixed	operator++( int );
+		Fixed	operator--( int );
+
+		// Les opérateurs de surcharges min et max
+
+		static Fixed		&max( Fixed &lVal, Fixed &rVal );
+		static Fixed const	&max( Fixed const &lVal, Fixed const &rVal );
+		static Fixed		&min( Fixed &lVal, Fixed &rVal );
+		static Fixed const	&min( Fixed const &lVal, Fixed const &rVal );
 		
 		// Geter, seter, autres...
 
