@@ -6,32 +6,30 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:43:45 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/19 18:39:53 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/19 18:40:38 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "../includes/Fixed.hpp"
 
 Fixed::Fixed( void ) : _n(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	return;
 }
 
 Fixed::~Fixed( void )
 {
-	std::cout << "Destructor called" << std::endl;
+	return;
 }
 
 Fixed	&Fixed::operator=( Fixed const &n )
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	this->setRawBits(n.getRawBits());
 	return *this;
 }
 
 Fixed::Fixed( const Fixed &n )
 {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = n;
 }
 
@@ -49,7 +47,6 @@ Fixed::Fixed( int const n ) : _n(n << 8)
 {
 	if (n < 0)
 		_n |= 0x80000000;
-	std::cout << "Int constructor called" << std::endl;
 }
 
 //Mantisse and exposant for float definition in 
@@ -66,6 +63,7 @@ Fixed::Fixed( float const f )
 	int		*mantisse;
 	
 	//My first step is to know float mantisse, exposant and sign
+
 	if (!f)
 	{
 		this->_n = 0;
@@ -95,7 +93,6 @@ Fixed::Fixed( float const f )
 		this->_n = ~this->_n;
 		this->_n += 1;
 	}
-	std::cout << "Float constructor called" << std::endl;
 }
 
 float	Fixed::toFloat( void )	const
@@ -168,6 +165,121 @@ int	Fixed::toInt( void )	const
 	if (sign)
 		to_build |= 0x80000000;
 	return (to_build);
+}
+
+Fixed	Fixed::operator+( Fixed const &val )
+{
+	float	result;
+
+	result = this->toFloat() + val.toFloat();
+	return (Fixed(result));
+}
+
+Fixed	Fixed::operator-( Fixed const &val )
+{
+	float	result;
+
+	result = this->toFloat() - val.toFloat();
+	return (Fixed(result));
+}
+
+Fixed	Fixed::operator*( Fixed const &val )
+{
+	float	result;
+
+	result = this->toFloat() * val.toFloat();
+	return (Fixed(result));
+}
+
+Fixed	Fixed::operator/( Fixed const &val )
+{
+	float	result;
+
+	result = this->toFloat() / val.toFloat();
+	return (Fixed(result));
+}
+
+bool	Fixed::operator>( Fixed const &rVal )
+{
+	return (this->getRawBits() > rVal.getRawBits());
+}
+
+bool	Fixed::operator<=( Fixed const &rVal )
+{
+	return (!(*this > rVal));
+}
+
+bool	Fixed::operator<( Fixed const &rVal )
+{
+	return (this->getRawBits() < rVal.getRawBits());
+}
+
+bool	Fixed::operator>=( Fixed const &rVal )
+{
+	return (!(*this < rVal));
+}
+
+bool	Fixed::operator==( Fixed const &rVal )
+{
+	return (this->getRawBits() == rVal.getRawBits());
+}
+
+bool	Fixed::operator!=( Fixed const &rVal )
+{
+	return (!(*this == rVal));
+}
+
+Fixed	Fixed::operator++( void )
+{
+	this->_n += 1;
+	return (*this);
+}
+
+Fixed	Fixed::operator--( void )
+{
+	this->_n -= 1;
+	return (*this);
+}
+
+Fixed	Fixed::operator++( int )
+{
+	Fixed	temp( *this );
+	this->_n += 1;
+	return (temp);
+}
+
+Fixed	Fixed::operator--( int )
+{
+	Fixed	temp( *this );
+	this->_n -= 1;
+	return (temp);
+}
+
+Fixed	&Fixed::max( Fixed &lVal, Fixed &rVal )
+{
+	if (lVal > rVal)
+		return (lVal);
+	return (rVal);
+}
+
+Fixed const	&Fixed::max( Fixed const &lVal, Fixed const &rVal )
+{
+	if (lVal.getRawBits() > rVal.getRawBits())
+		return (lVal);
+	return (rVal);
+}
+
+Fixed	&Fixed::min( Fixed &lVal, Fixed &rVal )
+{
+	if (lVal < rVal)
+		return (lVal);
+	return (rVal);
+}
+Fixed const	&Fixed::min( Fixed const &lVal, Fixed const &rVal )
+{
+	if (lVal.getRawBits() < rVal.getRawBits())
+		return (lVal);
+	return (rVal);
 }
 
 std::ostream	&operator<<( std::ostream &o, Fixed const &f )

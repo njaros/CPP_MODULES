@@ -64,6 +64,11 @@ Fixed::Fixed( float const f )
 	
 	//My first step is to know float mantisse, exposant and sign
 
+	if (!f)
+	{
+		this->_n = 0;
+		return ;
+	}
 	f_exposant = f;					//I copy because f is const.
 	f_mantisse = f;					//New copy because f_exposant will be unusable after his traitment
 	sign = 0;
