@@ -1,8 +1,7 @@
 #include "../includes/ScavTrap.hpp"
 
-ScavTrap::ScavTrap( void )
+ScavTrap::ScavTrap( void ) : ClapTrap()
 {
-	this->setName("unnamed");
 	this->setClassName("ScavTrap");
 	this->setHp(100);
 	this->setEp(50);
@@ -10,9 +9,8 @@ ScavTrap::ScavTrap( void )
 	std::cout << "ScavTrap default constructor : An unnamed ScavTrap has been created" << std::endl;
 }
 
-ScavTrap::ScavTrap( std::string name )
+ScavTrap::ScavTrap( std::string name ) : ClapTrap( name )
 {
-	this->setName(name);
 	this->setClassName("ScavTrap");
 	this->setHp(100);
 	this->setEp(50);
@@ -20,13 +18,8 @@ ScavTrap::ScavTrap( std::string name )
 	std::cout << "ScavTrap constructor : A ScavTrap named " << this->getName() << " has been created" << std::endl;
 }
 
-ScavTrap::ScavTrap( ScavTrap const &other ) : ClapTrap()
+ScavTrap::ScavTrap( ScavTrap const &other ) : ClapTrap( other )
 {
-	this->setName(other.getName());
-	this->setClassName(other.getClassName());
-	this->setHp(other.getHp());
-	this->setEp(other.getEp());
-	this->setAd(other.getAd());
 	std::cout << "ScavTrap copy constructor : A ScavTrap named " << this->getName() << " has been copied" << std::endl;
 }
 

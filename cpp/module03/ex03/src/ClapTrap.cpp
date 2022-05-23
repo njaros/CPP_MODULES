@@ -20,6 +20,16 @@ ClapTrap::~ClapTrap( void )
 	std::cout << "ClapTrap Destructor : The " << this->getClassName() << " " << this->_name << " has been deleted" << std::endl;
 }
 
+ClapTrap&	ClapTrap::operator=( ClapTrap const &other )	
+{
+	this->_name = other._name;
+	this->_className = other._className;
+	this->_healthPoints = other._healthPoints;
+	this->_energyPoints = other._energyPoints;
+	this->_attackDamage = other._attackDamage;
+	return (*this);
+}
+
 void	ClapTrap::attack( const std::string& target )
 {
 	if (this->_energyPoints && this->_healthPoints)

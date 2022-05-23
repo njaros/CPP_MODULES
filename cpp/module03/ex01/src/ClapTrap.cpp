@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:43:33 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/23 10:45:20 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/23 11:24:01 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,25 @@ ClapTrap::ClapTrap( std::string name ) : _name(name), _className("ClapTrap"), _h
 	std::cout << "ClapTrap constructor : A ClapTrap named " << this->_name << " has been created" << std::endl;
 }
 
-ClapTrap::ClapTrap( ClapTrap const &other ) : _name(other._name), _className(other._className), _healthPoints(other._healthPoints), _energyPoints(other._energyPoints), _attackDamage(other._attackDamage)
+ClapTrap::ClapTrap( ClapTrap const &other )
 {
+	*this = other;
 	std::cout << "ClapTrap copy constructor : A ClapTrap named " << this->_name << " has been copied" << std::endl;
 }
 
 ClapTrap::~ClapTrap( void )
 {
 	std::cout << "ClapTrap Destructor : The " << this->getClassName() << " " << this->_name << " has been deleted" << std::endl;
+}
+
+ClapTrap&	ClapTrap::operator=( ClapTrap const &other )	
+{
+	this->_name = other._name;
+	this->_className = other._className;
+	this->_healthPoints = other._healthPoints;
+	this->_energyPoints = other._energyPoints;
+	this->_attackDamage = other._attackDamage;
+	return (*this);
 }
 
 void	ClapTrap::attack( const std::string& target )

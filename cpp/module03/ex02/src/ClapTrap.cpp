@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:46:20 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/23 10:46:22 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/23 15:43:54 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ ClapTrap::ClapTrap( ClapTrap const &other ) : _name(other._name), _className(oth
 ClapTrap::~ClapTrap( void )
 {
 	std::cout << "ClapTrap Destructor : The " << this->getClassName() << " " << this->_name << " has been deleted" << std::endl;
+}
+
+ClapTrap&	ClapTrap::operator=( ClapTrap const &other )	
+{
+	this->_name = other._name;
+	this->_className = other._className;
+	this->_healthPoints = other._healthPoints;
+	this->_energyPoints = other._energyPoints;
+	this->_attackDamage = other._attackDamage;
+	return (*this);
 }
 
 void	ClapTrap::attack( const std::string& target )

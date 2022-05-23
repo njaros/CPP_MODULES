@@ -6,15 +6,14 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:46:31 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/23 10:46:31 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/23 15:36:28 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/FragTrap.hpp"
 
-FragTrap::FragTrap( void )
+FragTrap::FragTrap( void ) : ClapTrap()
 {
-	this->setName("unnamed");
 	this->setClassName("FragTrap");
 	this->setHp(100);
 	this->setEp(100);
@@ -22,9 +21,8 @@ FragTrap::FragTrap( void )
 	std::cout << "FragTrap default constructor : An unnamed FragTrap has been created AND IS READY TO BREAK MOUTHS" << std::endl;
 }
 
-FragTrap::FragTrap( std::string name )
+FragTrap::FragTrap( std::string name ) : ClapTrap( name )
 {
-	this->setName(name);
 	this->setClassName("FragTrap");
 	this->setHp(100);
 	this->setEp(100);
@@ -32,13 +30,8 @@ FragTrap::FragTrap( std::string name )
 	std::cout << "FragTrap constructor : A FragTrap named " << this->getName() << " has been created AND IS READY TO BREAK MOUTHS" << std::endl;
 }
 
-FragTrap::FragTrap( FragTrap const &other ) : ClapTrap()
+FragTrap::FragTrap( FragTrap const &other ) : ClapTrap( other )
 {
-	this->setName(other.getName());
-	this->setClassName(other.getClassName());
-	this->setHp(other.getHp());
-	this->setEp(other.getEp());
-	this->setAd(other.getAd());
 	std::cout << "FragTrap copy constructor : A FragTrap named " << this->getName() << " has been copied AND IS READY TO BREAK MOUTHS" << std::endl;
 }
 

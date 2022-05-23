@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 10:48:08 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/23 10:48:11 by njaros           ###   ########lyon.fr   */
+/*   Created: 2022/05/23 10:47:15 by njaros            #+#    #+#             */
+/*   Updated: 2022/05/23 17:15:56 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ class WrongAnimal
 		WrongAnimal( WrongAnimal const& other );
 		virtual ~WrongAnimal( void );
 
-		std::string			getName( void )	const;
-		void				setName( std::string name );
-		void		makeSound( void )	const;
+		WrongAnimal	&operator=( const WrongAnimal &other );
+
+		std::string		getName( void )	const;
+		void			setName( std::string name );
+		void			makeSound( void )	const;
 
 	private :
 

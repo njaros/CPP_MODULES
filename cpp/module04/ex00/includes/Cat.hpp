@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:47:04 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/23 10:47:04 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/23 17:42:47 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ class Cat : public Animal
 		Cat( Cat const& other );
 		virtual ~Cat( void );
 
+		using Animal::operator=;
+
 		virtual void	makeSound( void )	const;
 
 	private :
-
 
 };
 

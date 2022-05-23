@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:47:25 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/23 10:47:26 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/23 17:47:49 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,21 @@ Animal::~Animal( void )
 	std::cout << "Animal destructor called : " << this->getName() << " escaped." << std::endl;
 }
 
+Animal&	Animal::operator=( const Animal& other )
+{
+	this->setName(other.getName());
+	this->type = other.getType();
+	return (*this);
+}
+
 std::string	Animal::getName( void )	const
 {
 	return (this->_name);
+}
+
+std::string	Animal::getType( void )	const
+{
+	return (this->type);
 }
 
 void	Animal::setName( std::string name )

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 10:48:44 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/23 10:48:45 by njaros           ###   ########lyon.fr   */
+/*   Created: 2022/05/23 10:47:41 by njaros            #+#    #+#             */
+/*   Updated: 2022/05/23 17:15:17 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ WrongAnimal::WrongAnimal( WrongAnimal const& other ) : _name(other.getName())
 WrongAnimal::~WrongAnimal( void )
 {
 	std::cout << "WrongAnimal destructor called : " << this->getName() << " escaped." << std::endl;
+}
+
+WrongAnimal&	WrongAnimal::operator=( const WrongAnimal &other )
+{
+	this->setName(other.getName());
+	this->type = other.type;
+	return (*this);
 }
 
 std::string	WrongAnimal::getName( void )	const

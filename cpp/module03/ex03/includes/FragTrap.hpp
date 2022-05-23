@@ -3,7 +3,7 @@
 
 # include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 	public :
 
@@ -11,6 +11,8 @@ class FragTrap : public ClapTrap
 		FragTrap( std::string name );
 		FragTrap( FragTrap const &other );
 		~FragTrap( void );
+
+		using	ClapTrap::operator=;
 
 		void		highFivesGuys( void );
 

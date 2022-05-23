@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 10:46:09 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/23 15:35:28 by njaros           ###   ########lyon.fr   */
+/*   Created: 2022/05/23 18:28:21 by njaros            #+#    #+#             */
+/*   Updated: 2022/05/23 18:33:36 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef	AMATERIA_HPP
+# define AMATERIA_HPP
 
-# include "ClapTrap.hpp"
+#include <iostream>
 
-class FragTrap : public ClapTrap
+class	AMateria
 {
+	protected :
+
+		std::string	type;
+
 	public :
+		AMateria(std::string const &type);
 
-		FragTrap( void );
-		FragTrap( std::string name );
-		FragTrap( FragTrap const &other );
-		~FragTrap( void );
+		std::string const &getType()	const; //Returns the materia type
 
-		using	ClapTrap::operator=;
-
-		void		highFivesGuys( void );
-
+		virtual AMateria*	clone()	const = 0;
+		virtual void		use(ICharacter& target);
 };
 
 #endif

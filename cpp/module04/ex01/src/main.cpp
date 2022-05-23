@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 10:48:39 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/23 10:48:40 by njaros           ###   ########lyon.fr   */
+/*   Created: 2022/05/23 10:47:35 by njaros            #+#    #+#             */
+/*   Updated: 2022/05/23 18:14:59 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,23 @@
 
 int	main( void )
 {
-	Cat		*dina = new Cat("dina");
-	Animal	*jeanpascal = new Animal("Jean Pascal");
-	Animal	*porc = new Cat();	// <---- Upcast, compilateur is OK
+	Cat		*dina = new Cat("Dina");
+	Cat		*dina2 = new Cat;
 	Dog		*medor = new Dog("Medor");
-	Animal	*medor2 = new Dog(*medor);	// <---- Upcast, compilateur is OK
-	//Cat		*orion = new Animal(*dina); <-- Downcast, compilateur will refuse
-	WrongAnimal	*croco = new WrongAnimal("Croco");
-	WrongAnimal *tipoune = new WrongCat("Tipoune");
-	WrongCat	*neightboorscat = new WrongCat("Neighboor's cat");	
 
 	dina->makeSound();
-	jeanpascal->makeSound();
-	porc->makeSound();
 	medor->makeSound();
-	medor2->makeSound();
-	croco->makeSound();
-	tipoune->makeSound();
-	neightboorscat->makeSound();
+
+	dina->getBrain().setIdea(3, "What if I chase a mouse ?");
+	std::cout << dina->getBrain().getIdea(2) << std::endl;
+	*dina2 = *dina;
+	std::cout << dina2->getBrain().getIdea(3) << std::endl;
+
+	Cat		dina3 = *dina2;
+	std::cout << dina3.getBrain().getIdea(3) << std::endl;
 
 	delete (dina);
-	delete (jeanpascal);
-	delete (porc);
+	delete (dina2);
 	delete (medor);
-	delete (medor2);
-	delete (croco);
-	delete (tipoune);
-	delete (neightboorscat);
 	return (0);
 }

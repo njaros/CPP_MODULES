@@ -6,11 +6,11 @@
 #    By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/11 16:01:52 by njaros            #+#    #+#              #
-#    Updated: 2022/05/23 16:16:59 by njaros           ###   ########lyon.fr    #
+#    Updated: 2022/05/23 18:27:23 by njaros           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = claptrap
+NAME = polymorphism
 CC = g++
 FLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98
 
@@ -19,17 +19,11 @@ PATH_DEP		=	dep
 PATH_OBJS		=	obj
 PATH_INCLUDES	=	includes
 
-LST_SRCS		=	ClapTrap.cpp \
-					ScavTrap.cpp \
-					FragTrap.cpp \
-					DiamonTrap.cpp \
+LST_SRCS		=	AMateria.cpp \
 					main.cpp
 LST_OBJS		=	${LST_SRCS:.cpp=.o}
 LST_DEP			=	${LST_SRCS:.cpp=.d}
-LST_INCLUDES	=	ClapTrap.hpp \
-					ScavTrap.hpp \
-					DiamonTrap.hpp \
-					FragTrap.hpp
+LST_INCLUDES	=	AMateria.hpp
 SRC =		$(addprefix ${PATH_SRCS}/,${LST_SRCS})
 DEP =		$(addprefix ${PATH_DEP}/,${LST_DEP})
 OBJS =		$(addprefix ${PATH_OBJS}/,${LST_OBJS})

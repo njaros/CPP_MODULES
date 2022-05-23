@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.cpp                                      :+:      :+:    :+:   */
+/*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:28:41 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/16 15:51:17 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/23 15:41:46 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	PhoneBook::ftSearch(int i)
 
 	if (!i)
 	{
-		std::cout << "Theyre is no contact I remember yet" << std::endl;
+		std::cout << "There is no contact I remember yet" << std::endl;
 		return;
 	}
 	this->streamRepertory(i);

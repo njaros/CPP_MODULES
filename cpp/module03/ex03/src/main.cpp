@@ -1,11 +1,11 @@
 #include "../includes/ClapTrap.hpp"
 #include "../includes/ScavTrap.hpp"
 #include "../includes/FragTrap.hpp"
-#include "../includes/DiamondTrap.hpp"
+#include "../includes/DiamonTrap.hpp"
 
 int	main(void)
 {
-	DiamondTrap	diam("SOOOO SHINY");
+	DiamonTrap	diam("SOOOO SHINY");
 	diam.guardGate();
 	diam.highFivesGuys();
 	diam.whoAmI();

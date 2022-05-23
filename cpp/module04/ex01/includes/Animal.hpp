@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 10:47:54 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/23 10:47:56 by njaros           ###   ########lyon.fr   */
+/*   Created: 2022/05/23 10:46:58 by njaros            #+#    #+#             */
+/*   Updated: 2022/05/23 17:29:37 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ class Animal
 		Animal( Animal const& other );
 		virtual ~Animal( void );
 
+		Animal	&operator=( const Animal& other );
+
 		std::string			getName( void )	const;
+		std::string			getType( void )	const;
 		void				setName( std::string name );
 		virtual void		makeSound( void )	const;
 
