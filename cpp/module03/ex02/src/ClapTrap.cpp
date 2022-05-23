@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/23 10:46:20 by njaros            #+#    #+#             */
+/*   Updated: 2022/05/23 10:46:22 by njaros           ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ClapTrap.hpp"
 
 ClapTrap::ClapTrap( void ) : _name("unnamed"), _className("ClapTrap"), _healthPoints(10), _energyPoints(10), _attackDamage(0)
