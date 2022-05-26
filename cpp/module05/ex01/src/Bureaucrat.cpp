@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/26 09:34:57 by njaros            #+#    #+#             */
+/*   Updated: 2022/05/26 09:34:58 by njaros           ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat( void )
@@ -79,4 +91,18 @@ void	Bureaucrat::incrGrade( void )
 void	Bureaucrat::decrGrade( void )
 {
 	this->setGrade(this->getGrade() + 1);
+}
+
+void	Bureaucrat::signForm(Form const &form)
+{
+	if (form.getSigned())
+		std::cout << this->getName() << " signed " << form.getName() << "." << std::endl;
+	else
+	{
+		std::cout << this->getName() << " couldn't sign " << form.getName() << " because ";
+		if (this->getGrade() > form.getSignGrade())
+			std::cout << "his grade is too low (grade required is " << form.getSignGrade() << ")." << std::endl;
+		else
+			std::cout << "the problem is between the keyboard and the chair." << std::endl;
+	}
 }
