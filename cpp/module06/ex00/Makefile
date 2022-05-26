@@ -6,11 +6,11 @@
 #    By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 10:55:28 by njaros            #+#    #+#              #
-#    Updated: 2022/05/26 12:02:15 by njaros           ###   ########lyon.fr    #
+#    Updated: 2022/05/26 16:13:08 by njaros           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = bureaucrotte
+NAME = convert
 CC = g++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -19,19 +19,12 @@ PATH_DEP		=	dep
 PATH_OBJS		=	obj
 PATH_INCLUDES	=	includes
 
-LST_SRCS		=	main.cpp \
-					Bureaucrat.cpp \
-					Form.cpp \
-					ShrubberyCreationForm.cpp \
-					RobotomyRequestForm.cpp \
-					PresidentialPardonForm.cpp
+LST_SRCS		=	conversion.cpp \
+					
 LST_OBJS		=	${LST_SRCS:.cpp=.o}
 LST_DEP			=	${LST_SRCS:.cpp=.d}
-LST_INCLUDES	=	Bureaucrat.hpp \
-					Form.hpp \
-					ShrubberyCreationForm.hpp \
-					RobotomyRequestForm.hpp \
-					PresidentialPardonForm.hpp
+LST_INCLUDES	=	writingInType.hpp
+
 SRC =		$(addprefix ${PATH_SRCS}/,${LST_SRCS})
 DEP =		$(addprefix ${PATH_DEP}/,${LST_DEP})
 OBJS =		$(addprefix ${PATH_OBJS}/,${LST_OBJS})
@@ -59,7 +52,7 @@ clean :
 					rm -rf obj dep
 
 fclean :			clean
-					rm -f ${NAME} *_shrubbery
+					rm -f ${NAME}
 
 re :				fclean all
 
