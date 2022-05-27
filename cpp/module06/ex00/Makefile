@@ -6,7 +6,7 @@
 #    By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 10:55:28 by njaros            #+#    #+#              #
-#    Updated: 2022/05/26 16:13:08 by njaros           ###   ########lyon.fr    #
+#    Updated: 2022/05/27 11:14:22 by njaros           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ PATH_OBJS		=	obj
 PATH_INCLUDES	=	includes
 
 LST_SRCS		=	conversion.cpp \
+					isLitteral.cpp \
+					commonUtils.cpp
 					
 LST_OBJS		=	${LST_SRCS:.cpp=.o}
 LST_DEP			=	${LST_SRCS:.cpp=.d}

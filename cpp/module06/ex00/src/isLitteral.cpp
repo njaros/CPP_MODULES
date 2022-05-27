@@ -6,25 +6,51 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 17:30:16 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/26 17:46:36 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/27 14:10:01 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/writingInType.hpp"
 
-bool	isLitteral(std::string str)
+bool	isLitteral(std::string str, int &type)
 {
-	int	i;
+	std::string::size_type	idx;
 
+	idx = 0;
+	type = DOUBLE;
 	if (str.empty())
 		return (0);
 	if (str.length() == 1)
-		return (1);
-	i = 0;
-	if (str.data()[i] == '-')
-		i++;
-	while (str.data()[i] && std::is_str.data()[i])
 	{
-		if 
-	}	
+		type = CHAR;
+		return (1);
+	}
+	if (isLitteralException(str , type))
+		return (1);
+	if (str.data()[idx] == '-')
+		idx++;
+	if (!isNum(str.data()[idx]))
+		return (0);
+	while (isNum(str.data()[idx]))
+		idx++;
+	if (!str.data()[idx])
+	{
+		type = INT;
+		return (1);
+	}
+	if (str.data()[idx] != '.')
+		return (0);
+	idx++;
+	if (!isNum(str.data()[idx]))
+		return (0);
+	while (isNum(str.data()[idx]))
+		idx++;
+	if (str.data()[idx] == 'F')
+	{
+		type = FLOAT;
+		idx++;
+	}
+	if (str.data()[idx])
+		return (0);
+	return (1);
 }

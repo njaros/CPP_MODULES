@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 16:10:15 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/26 17:29:24 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/27 14:31:27 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,19 @@
 # define MIN_FLOAT std::numeric_limits<float>::min()
 # define MAX_DOUBLE std::numeric_limits<double>::max()
 # define MIN_DOUBLE std::numeric_limits<double>::min()
+# define CHAR 1
+# define INT 2
+# define FLOAT 3
+# define DOUBLE 4
 
-void	writeInt(std::string str);
-void	writeChar(std::string str);
-void	writeFloat(std::string str);
-void	writeDouble(std::string str);
-bool	isLitteral(std::string str);
+void		stringToInt(std::string str);
+void		stringToChar(std::string str);
+void		stringToFloat(std::string str);
+void		stringToDouble(std::string str);
+bool		isNum(char c);
+bool		isLitteral(std::string str, int &type);
+bool		isLitteralException(std::string str, int &type);
+void		eraseFirstsZeros(std::string &str);
+std::string	toUpperStr(std::string str);
 
 #endif

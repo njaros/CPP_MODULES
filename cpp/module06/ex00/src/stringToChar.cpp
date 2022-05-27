@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   writeChar.cpp                                      :+:      :+:    :+:   */
+/*   stringToChar.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 17:11:36 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/26 17:26:50 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/27 14:32:10 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/writingInType.hpp"
 
-void	writeChar(std::string str)
+bool	isChar(std::string str)
+{
+	if (str.length() == 1)
+		return (1);
+	return (0);
+}
+
+void	stringToChar(std::string str)
 {
 	char	castChar;
+	int		val;
 
-	if (str.compare("nan") || str.compare("NaN"))
+	std::cout << "char: ";
+	if (isLitteralException(str, val))
 	{
 		std::cout << "impossible" << std::endl;
-		return;
+		return ;
 	}
-	if (std::atoi(str.data()) > MAX_CHAR || )
+	if (isChar(str))
+	{
+		std::cout << str << std::endl;
+		return ;
+	}
+	
 }
