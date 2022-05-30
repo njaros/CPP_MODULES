@@ -6,7 +6,7 @@
 #    By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 10:55:28 by njaros            #+#    #+#              #
-#    Updated: 2022/05/27 11:14:22 by njaros           ###   ########lyon.fr    #
+#    Updated: 2022/05/30 12:48:24 by njaros           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,14 @@ PATH_OBJS		=	obj
 PATH_INCLUDES	=	includes
 
 LST_SRCS		=	conversion.cpp \
+					MultiType.cpp \
 					isLitteral.cpp \
 					commonUtils.cpp
 					
 LST_OBJS		=	${LST_SRCS:.cpp=.o}
 LST_DEP			=	${LST_SRCS:.cpp=.d}
-LST_INCLUDES	=	writingInType.hpp
+LST_INCLUDES	=	writingInType.hpp \
+					MultiType.hpp
 
 SRC =		$(addprefix ${PATH_SRCS}/,${LST_SRCS})
 DEP =		$(addprefix ${PATH_DEP}/,${LST_DEP})

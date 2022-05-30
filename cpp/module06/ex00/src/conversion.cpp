@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 14:02:20 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/27 16:56:32 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/30 12:46:47 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 int	main(int ac, char **av)
 {
 	std::string	toConvert;
-	MultiType	tool;
 	int			type;
 
 	if (ac != 2)
@@ -33,20 +32,10 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	eraseFirstsZeros(toConvert);
-	switch(type)
-	{
-		case (CHAR) : 
-			tool = MultiType(toConvert.data()[0]);
-			break ;
-		case (INT) :
-			tool = MultiType(std::stoi(toConvert.data()));
-			break;
-		case (FLOAT) :
-			tool = MultiType(std::stof(toConvert.data()));
-			break;
-		default :
-			tool = MultiType(std::stod(toConvert.data()));
-	}
-	
+	MultiType tool(toConvert, type);
+	tool.displayChar();
+	tool.displayInt();
+	tool.displayFloat();
+	tool.displayDouble();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 17:30:16 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/27 14:10:01 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/30 15:10:23 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ bool	isLitteral(std::string str, int &type)
 		return (0);
 	if (str.length() == 1)
 	{
-		type = CHAR;
+		if (str.data()[0] >= '0' && str.data()[0] <= '9')
+			type = INT;
+		else
+			type = CHAR;
 		return (1);
 	}
 	if (isLitteralException(str , type))

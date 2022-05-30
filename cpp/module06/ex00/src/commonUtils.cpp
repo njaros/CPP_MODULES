@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 09:49:34 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/27 14:12:43 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/05/30 11:05:55 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	eraseFirstsZeros(std::string &str)
 	idx = 0;
 	if (str.data()[idx] == '-')
 		idx++;
-	while (str.data()[idx] == '0' && str.data()[idx + 1] != '.')
+	while (str.data()[idx] == '0' && str.data()[idx + 1] && str.data()[idx + 1] != '.')
 	{
 		str.erase(idx, 1);
 	}
