@@ -6,11 +6,11 @@
 #    By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 10:55:28 by njaros            #+#    #+#              #
-#    Updated: 2022/05/31 08:24:22 by njaros           ###   ########lyon.fr    #
+#    Updated: 2022/05/31 13:20:04 by njaros           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = abcBase
+NAME = iter
 CC = g++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -19,14 +19,10 @@ PATH_DEP		=	dep
 PATH_OBJS		=	obj
 PATH_INCLUDES	=	includes
 
-LST_SRCS		=	main.cpp \
-					Base.cpp
+LST_SRCS		=	main.cpp
 LST_OBJS		=	${LST_SRCS:.cpp=.o}
 LST_DEP			=	${LST_SRCS:.cpp=.d}
-LST_INCLUDES	=	Base.hpp \
-					A.hpp \
-					B.hpp \
-					C.hpp
+LST_INCLUDES	=	iter.hpp
 SRC =		$(addprefix ${PATH_SRCS}/,${LST_SRCS})
 DEP =		$(addprefix ${PATH_DEP}/,${LST_DEP})
 OBJS =		$(addprefix ${PATH_OBJS}/,${LST_OBJS})
