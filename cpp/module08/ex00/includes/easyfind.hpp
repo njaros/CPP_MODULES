@@ -16,16 +16,20 @@
 # include <iostream>
 # include <algorithm>
 # include <exception>
-# include <vector>
 
 template < typename T >
-int	easyfind(T cont, int n)
+int easyfind(T &cont, int n) //Only works whit containers !!
 {
-	std::iterator<T>	p;
-	p = std::find(cont.begin(), cont.end(), n);
-	if (p == cont.end())
-		throw ("not found");
-	return (p);
+	int	idx = -1;
+	typename T::iterator it = cont.begin();
+	--it;
+	while (++it != cont.end())
+	{
+		idx++;
+		if (*it == n)
+			return (idx);
+	}
+	throw ("not found");
 }
 
 #endif
