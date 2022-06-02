@@ -6,18 +6,19 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:48:32 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/30 16:45:53 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 09:58:51 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/MultiType.hpp"
 
 MultiType::MultiType( void ) :	_char(0), _int(0), _float(0), _double(0), _type(0), _errInt(0),
-								_errFloat(0), _errDouble(0) ,_nan(0)
+								_errFloat(0), _errDouble(0) ,_nan(0) , _displayComaZero(0)
 {}
 
 MultiType::MultiType(std::string number, int type) :	_char(0), _int(0), _float(0), _double(0),
-														_type(type), _errInt(0), _errFloat(0), _errDouble(0), _nan(0)
+														_type(type), _errInt(0), _errFloat(0), _errDouble(0), _nan(0),
+														_displayComaZero(0)
 {
 	if (!number.compare("NAN") || !number.compare("NANF"))
 		this->_nan = 1;
@@ -41,7 +42,7 @@ MultiType::MultiType(MultiType const &other) :	_char(other.getCharValue()), _int
 												_float(other.getFloatValue()), _double(other.getDoubleValue()),
 												_type(other.getType()), _errInt(other.getErrIntValue()),
 												_errFloat(other.getErrFloatValue()), _errDouble(other.getErrDoubleValue()),
-												_nan(other.getNanValue())
+												_nan(other.getNanValue()), _displayComaZero(other.getDisplayComaZero())
 {}
 
 MultiType::~MultiType( void )
@@ -58,6 +59,7 @@ MultiType	&MultiType::operator=(MultiType const &other)
 	this->_errDouble = other.getDoubleValue();
 	this->_type = other.getType();
 	this->_nan = other.getNanValue();
+	this->_displayComaZero = other.getDisplayComaZero();
 	return (*this);
 }
 
@@ -96,6 +98,11 @@ bool	MultiType::getNanValue( void )	const
 	return (this->_nan);
 }
 
+bool	MultiType::getDisplayComaZero( void )	const
+{
+	return (this->_displayComaZero);
+}
+
 int	MultiType::getErrFloatValue( void )	const
 {
 	return (this->_errFloat);
@@ -109,6 +116,7 @@ int	MultiType::getErrDoubleValue( void )	const
 void	MultiType::setChar(std::string number)
 {
 	this->_char = number.data()[0];
+	this->_displayComaZero = 1;
 }
 
 void	MultiType::setInt(std::string number)
@@ -137,20 +145,21 @@ void	MultiType::setInt(std::string number)
 		return ;
 	}
 	this->_int = std::stoi(number);
+	if (this->_int < 1000000 && this->_int > -1000000)
+		this->_displayComaZero = 1;
 }
 
 void	MultiType::setFloat(std::string number)
 {
 	std::string toCompareMax;
-	int			idx = 0;
-	bool		sign = 0;
+	int			sign = 0;
 	int			coma;
 	int			comaMax;
 
-	if (number.data()[0] == '-' && ++idx)
+	if (number.data()[0] == '-')
 		sign = 1;
-	toCompareMax = number.substr(idx, number.size() - idx);
-	coma = number.find('.', 0);
+	toCompareMax = number.substr(sign, number.size() - sign);
+	coma = toCompareMax.find('.', 0);
 	comaMax = std::to_string(MAX_FLOAT).find('.', 0);
 	if (coma > comaMax)
 	{
@@ -171,20 +180,27 @@ void	MultiType::setFloat(std::string number)
 		return ;
 	}
 	this->_float = std::stof(number);
+	if (this->_float < 1000000 && this->_float > -1000000)
+	{
+		coma += 1 + sign;
+		while (number.data()[coma] == '0')
+			coma++;
+		if (number.data()[coma] == 'F')
+			this->_displayComaZero = 1;
+	}
 }
 
 void	MultiType::setDouble(std::string number)
 {
 	std::string toCompareMax;
-	int			idx = 0;
-	bool		sign = 0;
+	int			sign = 0;
 	int			coma;
 	int			comaMax;
 
-	if (number.data()[0] == '-' && ++idx)
+	if (number.data()[0] == '-')
 		sign = 1;
-	toCompareMax = number.substr(idx, number.size() - idx);
-	coma = number.find('.', 0);
+	toCompareMax = number.substr(sign, number.size() - sign);
+	coma = toCompareMax.find('.', 0);
 	comaMax = std::to_string(MAX_DOUBLE).find('.', 0);
 	if (coma > comaMax)
 	{
@@ -205,6 +221,14 @@ void	MultiType::setDouble(std::string number)
 		return ;
 	}
 	this->_double = std::stod(number);
+	if (this->_double < 1000000 && this->_double > -1000000)
+	{
+		coma += 1 + sign;
+		while (number.data()[coma] == '0')
+			coma++;
+		if (!number.data()[coma])
+			this->_displayComaZero = 1;
+	}
 }
 
 void	MultiType::displayChar( void )
@@ -233,7 +257,7 @@ void	MultiType::displayChar( void )
 				std::cout << "char " << this->_int << " isn't displayable" << std::endl;
 				return ;
 			}
-			std::cout << (char)this->_int;
+			std::cout << static_cast<char>(this->_int);
 			break ;
 
 		case (FLOAT) :
@@ -244,10 +268,10 @@ void	MultiType::displayChar( void )
 			}
 			if (this->_float <= 31 || this->_float >= 127)
 			{
-				std::cout << "char " << (int)this->_float << " isn't displayable" << std::endl;
+				std::cout << "char " << static_cast<int>(this->_float) << " isn't displayable" << std::endl;
 				return ;
 			}
-			std::cout << (char)this->_float;
+			std::cout << static_cast<char>(this->_float);
 			break;
 		
 		case (DOUBLE) :
@@ -258,10 +282,10 @@ void	MultiType::displayChar( void )
 			}
 			if (this->_double <= 31 || this->_double >= 127)
 			{
-				std::cout << "char " << (int)this->_double << " isn't displayable." << std::endl;
+				std::cout << "char " << static_cast<int>(this->_double) << " isn't displayable." << std::endl;
 				return ;
 			}
-			std::cout << (char)this->_double;
+			std::cout << static_cast<char>(this->_double);
 			break;
 
 		default :
@@ -286,7 +310,7 @@ void	MultiType::displayInt( void )
 	switch (this->_type)
 	{
 		case (CHAR) :
-			std::cout << (int)this->_char;
+			std::cout << static_cast<int>(this->_char);
 			break ;
 		
 		case (FLOAT) :
@@ -295,7 +319,7 @@ void	MultiType::displayInt( void )
 				std::cout << "int overflow" << std::endl;
 				return ;
 			}
-			std::cout << (int)this->_float;
+			std::cout << static_cast<int>(this->_float);
 			break ;
 
 		case (DOUBLE) :
@@ -304,7 +328,7 @@ void	MultiType::displayInt( void )
 				std::cout << "int overflow." << std::endl;
 				return ;
 			}
-			std::cout << (int)this->_double;
+			std::cout << static_cast<int>(this->_double);
 			break ;
 
 		default :
@@ -334,20 +358,22 @@ void	MultiType::displayFloat( void )
 	switch (this->_type)
 	{
 		case (CHAR) : 
-			std::cout << (float) this->_char << ".0";
+			std::cout << static_cast<float>(this->_char);
 			break ;
 		
 		case (INT) :
-			std::cout << (float) this->_int << ".0";
+			std::cout << static_cast<float>(this->_int);
 			break ;
 
 		case(DOUBLE) :
-			std::cout << (float) this->_double;
+			std::cout << static_cast<float>(this->_double);
 			break ;
 		
 		default :
 			std::cout << this->_float;
 	}
+	if (this->_displayComaZero)
+		std::cout << ".0";
 	std::cout << "f" << std::endl; 
 }
 
@@ -372,19 +398,21 @@ void	MultiType::displayDouble( void )
 	switch (this->_type)
 	{
 		case (CHAR) : 
-			std::cout << (float) this->_char << ".0";
+			std::cout << static_cast<double>(this->_char);
 			break ;
 		
 		case (INT) :
-			std::cout << (float) this->_int << ".0";
+			std::cout << static_cast<double>(this->_int);
 			break ;
 
 		case(FLOAT) :
-			std::cout << (float) this->_float;
+			std::cout << static_cast<double>(this->_float);
 			break ;
 		
 		default :
 			std::cout << this->_double;
 	}
+	if (this->_displayComaZero)
+		std::cout << ".0";
 	std::cout << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:39:31 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/30 16:15:17 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 09:23:18 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class	MultiType
 		int		getErrFloatValue( void )	const;
 		int		getErrDoubleValue( void )	const;
 		bool	getNanValue( void )	const;
+		bool	getDisplayComaZero( void )	const;
 
 		void	displayChar( void );
 		void	displayInt( void );
@@ -56,6 +57,7 @@ class	MultiType
 		int		_errFloat;
 		int		_errDouble;
 		bool	_nan;
+		bool	_displayComaZero;
 		
 };
 
