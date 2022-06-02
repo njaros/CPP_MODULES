@@ -6,11 +6,11 @@
 #    By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/11 16:01:52 by njaros            #+#    #+#              #
-#    Updated: 2022/05/11 17:39:11 by njaros           ###   ########lyon.fr    #
+#    Updated: 2022/06/02 13:44:30 by njaros           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = claptrap
+NAME = span
 CC = g++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -19,11 +19,11 @@ PATH_DEP		=	dep
 PATH_OBJS		=	obj
 PATH_INCLUDES	=	includes
 
-LST_SRCS		=	ClapTrap.cpp \
-					main.cpp
+LST_SRCS		=	main.cpp \
+					Span.cpp
 LST_OBJS		=	${LST_SRCS:.cpp=.o}
 LST_DEP			=	${LST_SRCS:.cpp=.d}
-LST_INCLUDES	=	ClapTrap.hpp
+LST_INCLUDES	=	Span.hpp
 SRC =		$(addprefix ${PATH_SRCS}/,${LST_SRCS})
 DEP =		$(addprefix ${PATH_DEP}/,${LST_DEP})
 OBJS =		$(addprefix ${PATH_OBJS}/,${LST_OBJS})

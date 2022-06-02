@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/02 10:06:48 by njaros            #+#    #+#             */
+/*   Updated: 2022/06/02 15:05:34 by njaros           ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
 # include <vector>
 # include <algorithm>
+# include <iostream>
 
 class Span
 {
@@ -19,21 +32,19 @@ class Span
 
 		//Span fonctions
 
-		void			AddNumber(int);
+		void			addNumber(int);
 		long int		shortestSpan()	const;
 		long int		longestSpan()	const;
 
 		//Geters
 
-		unsigned int	getSize()		const;
-		unsigned int	getIdx()		const;
-		int				*getVector()	const;
+		unsigned int		getSize()	const;
+		std::vector<int>	getVector()	const;
 
 	private :
 
-		unsigned int	_size;
-		int				*_vector;
-		unsigned int	_idx;
+		unsigned int		_size;
+		std::vector<int>	_vector;
 		Span();
 
 };
