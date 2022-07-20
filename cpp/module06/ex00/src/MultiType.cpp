@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:48:32 by njaros            #+#    #+#             */
-/*   Updated: 2022/06/02 09:58:51 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 16:20:49 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ void	MultiType::setInt(std::string number)
 		this->_errInt = 1;
 		return ;
 	}
-	this->_int = std::stoi(number);
+	this->_int = std::atoi(number.data());
 	if (this->_int < 1000000 && this->_int > -1000000)
 		this->_displayComaZero = 1;
 }
@@ -179,7 +179,7 @@ void	MultiType::setFloat(std::string number)
 			this->_errFloat = 2;
 		return ;
 	}
-	this->_float = std::stof(number);
+	this->_float = std::atof(number.data());
 	if (this->_float < 1000000 && this->_float > -1000000)
 	{
 		coma += 1 + sign;
@@ -220,7 +220,7 @@ void	MultiType::setDouble(std::string number)
 			this->_errDouble = 2;
 		return ;
 	}
-	this->_double = std::stod(number);
+	this->_double = std::atof(number.data());
 	if (this->_double < 1000000 && this->_double > -1000000)
 	{
 		coma += 1 + sign;

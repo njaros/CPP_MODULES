@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:35:03 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/26 09:35:04 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 14:49:14 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main(void)
 		Bureaucrat	bob("Bob", 12);
 		Bureaucrat	luc("Luc", 15);
 		Form		a("a38", 13, 15);
-		//Form		b("b27", 0, 2);
+	//	Form		b("b27", 0, 2);
 		Form		c("c15", 150, 150);
 		tryToSign(a, luc);
 		tryToSign(a, bob);
