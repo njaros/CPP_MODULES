@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 16:10:15 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/30 12:47:36 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/16 15:57:11 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 
 # include <iostream>
 # include <string>
-# include <limits>
 
-# define MAX_INT std::numeric_limits<int>::max()
-# define MIN_INT std::numeric_limits<int>::min()
-# define MAX_CHAR std::numeric_limits<char>::max()
-# define MIN_CHAR std::numeric_limits<char>::min()
-# define MAX_FLOAT std::numeric_limits<float>::max()
-# define MIN_FLOAT std::numeric_limits<float>::min()
-# define MAX_DOUBLE std::numeric_limits<double>::max()
-# define MIN_DOUBLE std::numeric_limits<double>::min()
+# define MAX_INT 2147483647
+# define MIN_INT -2147483648
+# define MAX_INT_STR "2147483647"
+# define MIN_INT_STR "-2147483648"
+# define MAX_CHAR 127
+# define MIN_CHAR -128
+# define MAX_FLOAT "340282346638528859811704183484516925440.000000"
+# define MIN_FLOAT "-340282346638528859811704183484516925440.000000"
+# define MAX_DOUBLE "179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000"
+# define MIN_DOUBLE "-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000"
 # define CHAR 1
 # define INT 2
 # define FLOAT 3

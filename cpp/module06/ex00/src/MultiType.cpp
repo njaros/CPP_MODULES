@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 14:48:32 by njaros            #+#    #+#             */
-/*   Updated: 2022/07/20 16:20:49 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/16 15:58:00 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,12 +134,12 @@ void	MultiType::setInt(std::string number)
 		return ;
 	}
 	toCompareMax.insert(0, 10 - toCompareMax.size(), '0');
-	if (!sign && toCompareMax.compare(std::to_string(MAX_INT)) > 0)
+	if (!sign && toCompareMax.compare(MAX_INT_STR) > 0)
 	{
 		this->_errInt = 1;
 		return ;
 	}
-	if (sign && toCompareMax.compare(std::to_string(MIN_INT).substr(idx, std::to_string(MIN_INT).size() - idx)) > 0)
+	if (sign && toCompareMax.compare(std::string(MIN_INT_STR).substr(idx, std::string(MIN_INT_STR).size() - idx)) > 0)
 	{
 		this->_errInt = 1;
 		return ;
@@ -160,7 +160,7 @@ void	MultiType::setFloat(std::string number)
 		sign = 1;
 	toCompareMax = number.substr(sign, number.size() - sign);
 	coma = toCompareMax.find('.', 0);
-	comaMax = std::to_string(MAX_FLOAT).find('.', 0);
+	comaMax = std::string(MAX_FLOAT).find('.', 0);
 	if (coma > comaMax)
 	{
 		if (!sign)
@@ -171,7 +171,7 @@ void	MultiType::setFloat(std::string number)
 	}
 	toCompareMax.insert(0, comaMax - coma, '0');
 	toCompareMax.erase(toCompareMax.size() - 1, 1);
-	if (toCompareMax.compare(std::to_string(MAX_FLOAT)) > 0)
+	if (toCompareMax.compare(MAX_FLOAT) > 0)
 	{
 		if (!sign)
 			this->_errFloat = 1;
@@ -201,7 +201,7 @@ void	MultiType::setDouble(std::string number)
 		sign = 1;
 	toCompareMax = number.substr(sign, number.size() - sign);
 	coma = toCompareMax.find('.', 0);
-	comaMax = std::to_string(MAX_DOUBLE).find('.', 0);
+	comaMax = std::string(MAX_DOUBLE).find('.', 0);
 	if (coma > comaMax)
 	{
 		if (!sign)
@@ -212,7 +212,7 @@ void	MultiType::setDouble(std::string number)
 	}
 	toCompareMax.insert(0, comaMax - coma, '0');
 	toCompareMax.erase(toCompareMax.size() - 1, 1);
-	if (toCompareMax.compare(std::to_string(MAX_DOUBLE)) > 0)
+	if (toCompareMax.compare(MAX_DOUBLE) > 0)
 	{
 		if (!sign)
 			this->_errDouble = 1;
