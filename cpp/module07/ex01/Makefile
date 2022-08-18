@@ -6,12 +6,12 @@
 #    By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 10:55:28 by njaros            #+#    #+#              #
-#    Updated: 2022/05/31 13:20:04 by njaros           ###   ########lyon.fr    #
+#    Updated: 2022/08/18 11:13:30 by njaros           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = iter
-CC = g++
+CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 PATH_SRCS		=	src

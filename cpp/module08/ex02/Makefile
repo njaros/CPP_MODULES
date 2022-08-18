@@ -6,12 +6,12 @@
 #    By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/11 16:01:52 by njaros            #+#    #+#              #
-#    Updated: 2022/06/02 15:09:41 by njaros           ###   ########lyon.fr    #
+#    Updated: 2022/08/18 11:14:12 by njaros           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = abominable
-CC = g++
+CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 PATH_SRCS		=	src

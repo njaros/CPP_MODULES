@@ -6,12 +6,12 @@
 #    By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/11 16:01:52 by njaros            #+#    #+#              #
-#    Updated: 2022/05/31 16:59:10 by njaros           ###   ########lyon.fr    #
+#    Updated: 2022/08/18 11:14:03 by njaros           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = easyfind
-CC = g++
+CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 PATH_SRCS		=	src
