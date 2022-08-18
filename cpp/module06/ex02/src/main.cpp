@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 08:09:57 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/31 09:37:00 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 17:22:21 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	identify(Base &p)
 		std::cout << "A" << std::endl;
 		return ;
 	}
-	catch(std::bad_cast &bc)
+	catch(std::exception &bc)
 	{}
 	try
 	{
@@ -80,7 +80,7 @@ void	identify(Base &p)
 		std::cout << "B" << std::endl;
 		return ;
 	}
-	catch(std::bad_cast &bc)
+	catch(std::exception &bc)
 	{}
 	try
 	{
@@ -89,7 +89,7 @@ void	identify(Base &p)
 		std::cout << "C" << std::endl;
 		return ;
 	}
-	catch(std::bad_cast &bc)
+	catch(std::exception &bc)
 	{}
 }
 
