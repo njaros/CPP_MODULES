@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:34:38 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/26 09:34:38 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:15:04 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ Bureaucrat::~Bureaucrat( void )
 
 Bureaucrat&	Bureaucrat::operator=(Bureaucrat const &other)
 {
-	this->setName(other.getName());
 	this->setGrade(other.getGrade());
 	return (*this);
 }
@@ -60,11 +59,6 @@ void	Bureaucrat::setGrade(int grade)
 		throw GradeTooLow();
 	else
 		this->_grade = grade;
-}
-
-void	Bureaucrat::setName(std::string name)
-{
-	this->_name = name;
 }
 
 std::ostream	&operator<<(std::ostream &o, Bureaucrat const &bur)

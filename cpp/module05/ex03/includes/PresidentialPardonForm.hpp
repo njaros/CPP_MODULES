@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:34:03 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/26 10:34:46 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:48:32 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class	PresidentialPardonForm : public Form
 		
 		using			Form::operator=;
 		std::string		getTarget( void )	const;
-		virtual void	execute(Bureaucrat const &executor);
+		virtual void	execute(Bureaucrat const &executor)	const;
 
 	private :
 

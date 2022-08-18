@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:33:53 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/26 11:50:10 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:45:44 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ class	Bureaucrat
 		std::string	getName( void )		const;
 		void		setGrade( int grade );
 		void		setName(std::string name);
-		void		signForm(Form const &form);
-		void		executeForm(Form &form);
+		void		signForm(Form &form);
+		void		executeForm(Form const &form);
 		class		GradeTooHigh : public std::exception
 		{
 			public :
@@ -57,8 +57,8 @@ class	Bureaucrat
 	
 	private:
 
-		std::string	_name;
-		int			_grade;
+		std::string	const	_name;
+		int					_grade;
 		Bureaucrat(void);
 
 };

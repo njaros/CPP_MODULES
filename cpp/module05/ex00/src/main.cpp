@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:34:35 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/26 09:34:35 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:52:18 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,7 @@ int main(void)
 		bob.incrGrade();
 		std::cout << "this message won't be written";
 	}
-	catch(Bureaucrat::GradeTooHigh const& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch(Bureaucrat::GradeTooLow const& e)
+	catch(std::exception const& e)
 	{
 		std::cout << e.what() << std::endl;
 	}
@@ -42,11 +38,7 @@ int main(void)
 		Bureaucrat bob("bob", 151);
 		std::cout << "this message won't be written";
 	}
-	catch(Bureaucrat::GradeTooHigh const& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch(Bureaucrat::GradeTooLow const& e)
+	catch(std::exception const& e)
 	{
 		std::cout << e.what() << std::endl;
 	}
@@ -61,11 +53,7 @@ int main(void)
 		bob.incrGrade();
 		std::cout << bob << std::endl;
 	}
-	catch(Bureaucrat::GradeTooHigh const& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch(Bureaucrat::GradeTooLow const& e)
+	catch(std::exception const& e)
 	{
 		std::cout << e.what() << std::endl;
 	}

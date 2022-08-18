@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:34:21 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/26 10:19:53 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:49:15 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ std::string	PresidentialPardonForm::getTarget( void )	const
 	return (this->_target);
 }
 
-void	PresidentialPardonForm::execute(Bureaucrat const &executor)
+void	PresidentialPardonForm::execute(Bureaucrat const &executor)	const
 {
 	if (executor.getGrade() > this->getExecGrade())
 		throw GradeTooLow();

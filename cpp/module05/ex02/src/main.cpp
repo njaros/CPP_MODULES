@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:34:19 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/26 12:00:37 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:51:20 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	tryToSign(Form &form, Bureaucrat &bur)
 	{
 		form.beSigned(bur);
 	}
-	catch(Form::GradeTooHigh const& e)
+	catch(std::exception const& e)
 	{
 		std::cout << e.what() << std::endl;
 	}

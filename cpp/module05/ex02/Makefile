@@ -6,12 +6,12 @@
 #    By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 10:55:28 by njaros            #+#    #+#              #
-#    Updated: 2022/06/02 10:39:21 by njaros           ###   ########lyon.fr    #
+#    Updated: 2022/08/18 10:15:59 by njaros           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = bureaucrotte
-CC = g++
+CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 PATH_SRCS		=	src

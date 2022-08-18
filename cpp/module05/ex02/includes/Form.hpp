@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:33:59 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/26 11:37:56 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:41:48 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class	Form
 		int				getExecGrade(void)	const;
 		bool			getSigned(void)		const;
 		void			beSigned(Bureaucrat const &bur);
-		virtual	void	execute(Bureaucrat const &executor) = 0;
+		virtual	void	execute(Bureaucrat const &executor)	const = 0;
 		
 		class		GradeTooLow : public std::exception
 		{

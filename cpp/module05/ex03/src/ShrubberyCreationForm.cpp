@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:34:26 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/26 11:30:40 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:49:23 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ std::string	ShrubberyCreationForm::getTarget( void )	const
 	return (this->_target);
 }
 
-void	ShrubberyCreationForm::execute(Bureaucrat const &executor)
+void	ShrubberyCreationForm::execute(Bureaucrat const &executor)	const
 {
 	std::ofstream	ofs;
 	std::string		shrubbery;

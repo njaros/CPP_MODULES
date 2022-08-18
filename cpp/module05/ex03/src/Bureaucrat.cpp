@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:34:12 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/26 11:57:28 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:57:57 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ Bureaucrat::~Bureaucrat( void )
 
 Bureaucrat&	Bureaucrat::operator=(Bureaucrat const &other)
 {
-	this->setName(other.getName());
 	this->setGrade(other.getGrade());
 	return (*this);
 }
@@ -60,11 +59,6 @@ void	Bureaucrat::setGrade(int grade)
 		throw GradeTooLow();
 	else
 		this->_grade = grade;
-}
-
-void	Bureaucrat::setName(std::string name)
-{
-	this->_name = name;
 }
 
 std::ostream	&operator<<(std::ostream &o, Bureaucrat const &bur)
@@ -93,8 +87,10 @@ void	Bureaucrat::decrGrade( void )
 	this->setGrade(this->getGrade() + 1);
 }
 
-void	Bureaucrat::signForm(Form const &form)
+void	Bureaucrat::signForm(Form &form)
 {
+	// If I exactly do what the french subject ask me to do, they're is the absurd and useless code :
+	/*
 	if (form.getSigned())
 		std::cout << this->getName() << " signed " << form.getName() << "." << std::endl;
 	else
@@ -105,9 +101,24 @@ void	Bureaucrat::signForm(Form const &form)
 		else
 			std::cout << "the problem is between the keyboard and the chair." << std::endl;
 	}
+	*/
+
+	// Here is the most logically thing to do :
+	if (form.getSigned())
+		std::cout << this->getName() << " couldn't sign " << form.getName() << " because he's already signed" << std::endl;
+	else
+	{
+		if (form.getSignGrade() < this->getGrade())
+			std::cout << this->getName() << " couldn't sign " << form.getName() << " because his grade is too low" << std::endl;
+		else
+		{
+			form.beSigned(*this);
+			std::cout << this->getName() << " signed " << form.getName() << std::endl;
+		}
+	}
 }
 
-void	Bureaucrat::executeForm(Form &form)
+void	Bureaucrat::executeForm(Form const &form)
 {
 	try
 	{
@@ -120,6 +131,6 @@ void	Bureaucrat::executeForm(Form &form)
 	}
 	catch(Form::NotSignedException const& e)
 	{
-		std::cout << e.what() << " : " << form.getName() << "." << std::endl;
+		std::cout << this->getName() << " couldn't execute. " << e.what() << " : " << form.getName() << "." << std::endl;
 	}
 }

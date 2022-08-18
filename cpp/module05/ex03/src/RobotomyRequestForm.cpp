@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:34:24 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/26 10:36:36 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:49:19 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ std::string	RobotomyRequestForm::getTarget( void )	const
 	return (this->_target);
 }
 
-void	RobotomyRequestForm::execute(Bureaucrat const &executor)
+void	RobotomyRequestForm::execute(Bureaucrat const &executor)	const
 {
 	if (executor.getGrade() > this->getExecGrade())
 		throw GradeTooLow();

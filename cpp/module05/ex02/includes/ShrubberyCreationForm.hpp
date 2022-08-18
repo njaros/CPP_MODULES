@@ -6,7 +6,7 @@
 /*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:34:09 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/26 11:11:29 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:42:56 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class	ShrubberyCreationForm : public Form
 		
 		using			Form::operator=;
 		std::string		getTarget( void )	const;
-		virtual void	execute(Bureaucrat const &executor);
+		virtual void	execute(Bureaucrat const &executor) const;
 
 	private :
 
