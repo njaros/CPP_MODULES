@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:55:15 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/30 17:07:20 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 17:12:35 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 uintptr_t	serialize(Data* ptr)
 {
-	return((uintptr_t) ptr);
+	return(reinterpret_cast<uintptr_t>(ptr));
 }
 
 Data*	deserialize(uintptr_t raw)
 {
-	Data	*recover;
-
-	recover = (Data *)raw;
-	return(recover);
+	return(reinterpret_cast<Data *>(raw));
 }
 
 int	main()
