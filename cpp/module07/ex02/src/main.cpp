@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:57:56 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/31 16:43:41 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/20 17:39:35 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,35 @@ int main()
 	{
 		A[4] = 7;
 	}
-	catch (InvalidIndexException &e)
+	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl; 
+		std::cout << "I tried to go to the 7th element of a 4 size of my array A --> " << e.what() << std::endl; 
 	}
 	strs[0] = "coucou";
 	std::cout << strs[0] << std::endl;
-
+	const std::string &H = strs[0];
+	std::cout << H << std::endl;
 	Array<char> crash(0);
 	try
 	{
 		crash[0] = 'u';
 	}
-	catch (InvalidIndexException &e)
+	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl; 
+		std::cout << "I tried to allocate a value on an empty array --> " << e.what() << std::endl; 
 	}
+
+	const Array<std::string> &Constman = strs;
+	const std::string	&constval = Constman[0];
+	std::cout << "\n\n CONST DISPLAY IS POSSIBLE : \n\n" << constval << "\n\n";
+
+/*	Array<int> a(5);
+	const Array<int> &c = a;
+
+	const int &val = c[3];
+	const int &b = a[3];
+	int &c = a[3];
+	(void) b;
+	(void) c;
+	c += 1;*/
 }

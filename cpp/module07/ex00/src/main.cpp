@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 10:06:59 by njaros            #+#    #+#             */
-/*   Updated: 2022/08/18 11:39:09 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/20 17:45:06 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ int main( void )
 	std::string c = "chaine1";
 	std::string d = "chaine2";
 
+	std::cout << "\nbefore swaping, c = " << c << ", d = " << d << std::endl;
 	::swap(c, d);
-	std::cout << "c = " << c << ", d = " << d << std::endl;
+	std::cout << "after swaping, c = " << c << ", d = " << d << std::endl;
 	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
 	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
 

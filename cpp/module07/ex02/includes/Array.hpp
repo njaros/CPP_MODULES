@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:52:35 by njaros            #+#    #+#             */
-/*   Updated: 2022/05/31 16:41:31 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/20 16:43:35 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Array
 {
 	public :
 
+		Array(void) : _array(0), _size(0) {}
 		Array(unsigned int n) : _size(n)
 		{ 
 			this->_array = new T[n];
@@ -44,7 +45,16 @@ class Array
 			return (*this);
 		}
 
-		T	&operator[]( unsigned int idx ) const
+		T	&operator[]( unsigned int idx )
+		{
+			if (idx >= this->_size)
+			{
+				throw InvalidIndexException();
+			}
+			return (this->_array[idx]);
+		}
+
+		const T	&operator[]( unsigned int idx )	const
 		{
 			if (idx >= this->_size)
 			{
@@ -60,7 +70,6 @@ class Array
 		T				*_array;
 		unsigned int	_size;
 		
-		Array(void) : _array(0), _size(0) {}
 
 };
 
