@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 10:06:56 by njaros            #+#    #+#             */
-/*   Updated: 2022/08/23 17:06:28 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 17:42:05 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ std::vector<int>	Span::getVector()	const
 void	Span::addNumber(int n)
 {
 	if (this->_vector.size() == this->_size)
-		throw (std::out_of_range("Vector is full."));
+		throw (std::out_of_range("You tried to insert a new value when span's vector is full."));
 	this->_vector.push_back(n);
 }
 

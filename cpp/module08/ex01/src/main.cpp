@@ -6,30 +6,13 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 10:06:53 by njaros            #+#    #+#             */
-/*   Updated: 2022/08/23 17:26:31 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 17:57:09 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Span.hpp"
 #include <iostream>
 #include <vector>
-
-template < typename inputIteror >
-void	fillSpan(inputIteror begin, inputIteror last, Span &span)
-{
-	try
-	{
-		while (begin != last)
-		{
-			span.addNumber(*begin);
-			begin++;
-		}
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-}
 
 int main (int ac, char **av)
 {
@@ -40,7 +23,7 @@ int main (int ac, char **av)
 	idx = 0;
 	while (av[++idx])
 		argv.push_back(std::atoi(av[idx]));
-	fillSpan(argv.begin(), argv.end(), test);
+	test.insert(argv.begin(), argv.end());
 	std::cout << "longestSpan = ";
 	try
 	{
@@ -49,7 +32,7 @@ int main (int ac, char **av)
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
-	} 
+	}
 	std::cout << "shortestSpan = " ;
 	try
 	{
