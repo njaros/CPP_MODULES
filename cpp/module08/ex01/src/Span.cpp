@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 10:06:56 by njaros            #+#    #+#             */
-/*   Updated: 2022/06/28 09:39:13 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 17:06:28 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ std::vector<int>	Span::getVector()	const
 void	Span::addNumber(int n)
 {
 	if (this->_vector.size() == this->_size)
-		throw ("Vector is full.");
+		throw (std::out_of_range("Vector is full."));
 	this->_vector.push_back(n);
 }
 
@@ -58,7 +58,7 @@ long int	Span::shortestSpan()	const
 	std::vector<const int>::iterator	diff;
 
 	if (this->_vector.size() < 2)
-		throw ("Vector must at least contain 2 numbers.");
+		throw (std::invalid_argument("Vector must at least contain 2 numbers."));
 	it = this->_vector.begin();
 	while (it != this->_vector.end())
 	{
@@ -79,6 +79,6 @@ long int	Span::shortestSpan()	const
 long int	Span::longestSpan()	const
 {
 	if (this->_vector.size() < 2)
-		throw ("Vector must at least contain 2 numbers.");
+		throw (std::invalid_argument("Vector must at least contain 2 numbers."));
 	return (static_cast<long int> (*std::max_element(this->_vector.begin(), this->_vector.end())) - static_cast<long int> (*std::min_element(this->_vector.begin(), this->_vector.end())));
 }

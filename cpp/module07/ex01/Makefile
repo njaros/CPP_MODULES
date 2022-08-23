@@ -12,7 +12,7 @@
 
 NAME = iter
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -Wno-conversion -std=c++98
 
 PATH_SRCS		=	src
 PATH_DEP		=	dep

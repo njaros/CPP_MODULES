@@ -16,12 +16,6 @@
 # include <iostream>
 # include <string>
 
-class	InvalidIndexException : public std::exception
-		{
-			public :
-				char const	*what( void ) const throw() { return ("This index is out of border."); }
-		};
-
 template < typename T = int >
 class Array
 {
@@ -29,8 +23,9 @@ class Array
 
 		Array(void) : _array(0), _size(0) {}
 		Array(unsigned int n) : _size(n)
-		{ 
-			this->_array = new T[n];
+		{
+            if (n)
+			    this->_array = new T[n];
 		}
 		Array(Array const &other) { *this = other; }
 		~Array( void ) { delete []this->_array; }
@@ -38,12 +33,22 @@ class Array
 		Array	&operator=( Array const &other )
 		{
 			unsigned int	idx = -1;
+
+            delete []this->_array;
+            this->_array = NULL;
 			this->_size = other.size();
-			this->_array = new T[this->_size];
+            if (this->_size)
+			    this->_array = new T[this->_size];
 			while (++idx < this->_size)
 				this->_array[idx] = other[idx];
 			return (*this);
 		}
+
+        class	InvalidIndexException : public std::exception
+        {
+            public :
+                char const	*what( void ) const throw() { return ("This index is out of border."); }
+        };
 
 		T	&operator[]( unsigned int idx )
 		{

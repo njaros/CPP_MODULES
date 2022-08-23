@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njaros <njaros@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 10:06:48 by njaros            #+#    #+#             */
-/*   Updated: 2022/06/02 15:05:34 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 17:01:48 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <vector>
 # include <algorithm>
 # include <iostream>
+# include <exception>
 
 class Span
 {

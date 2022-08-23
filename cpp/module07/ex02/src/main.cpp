@@ -49,6 +49,17 @@ int main()
 	const std::string	&constval = Constman[0];
 	std::cout << "\n\n CONST DISPLAY IS POSSIBLE : \n\n" << constval << "\n\n";
 
+    Array<char> crash2(2);
+    crash2[0] = 'u';
+    crash2 = crash;
+    try
+    {
+        std::cout << crash[0] << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 /*	Array<int> a(5);
 	const Array<int> &c = a;
 
