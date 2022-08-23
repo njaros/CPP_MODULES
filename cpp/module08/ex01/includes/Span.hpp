@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 10:06:48 by njaros            #+#    #+#             */
-/*   Updated: 2022/08/23 18:02:17 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 18:05:54 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class Span
 		template < typename inputIteror >
 		void			insert(inputIteror begin, inputIteror last)
 		{
-			if (static_cast<long>(_size - _vector.size()) - (last - begin) < 0)
+			if (static_cast<long>(_size - _vector.size()) < (last - begin))
 				throw (std::out_of_range("not enought space on this span's container"));
 			_vector.insert(_vector.end(), begin, last);
 		}
