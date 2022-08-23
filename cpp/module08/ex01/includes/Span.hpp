@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 10:06:48 by njaros            #+#    #+#             */
-/*   Updated: 2022/08/23 17:56:58 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 18:02:17 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ class Span
 		//Geters
 
 		unsigned int		getSize()	const;
-		std::vector<int>	getVector()	const;
 
 	private :
 

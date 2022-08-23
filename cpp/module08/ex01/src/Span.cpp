@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 10:06:56 by njaros            #+#    #+#             */
-/*   Updated: 2022/08/23 17:42:05 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 18:03:15 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,13 @@ Span::~Span()
 Span	&Span::operator=( Span const &other )
 {
 	this->_size = other.getSize();
-	this->_vector = other.getVector();
+	this->_vector = other._vector;
 	return (*this);
 }
 
 unsigned int	Span::getSize()	const
 {
 	return (this->_size);
-}
-
-std::vector<int>	Span::getVector()	const
-{
-	return (this->_vector);
 }
 
 void	Span::addNumber(int n)
