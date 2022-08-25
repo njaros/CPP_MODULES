@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:52:35 by njaros            #+#    #+#             */
-/*   Updated: 2022/08/20 16:43:35 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/25 14:12:53 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ class Array
 		{
 			unsigned int	idx = -1;
 
+			if (&other == this)
+				return (*this);
             delete []this->_array;
             this->_array = NULL;
 			this->_size = other.size();

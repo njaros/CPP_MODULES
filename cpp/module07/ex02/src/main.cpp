@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:57:56 by njaros            #+#    #+#             */
-/*   Updated: 2022/08/20 17:39:35 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/08/25 14:14:04 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int main()
 	std::cout << A[2] << std::endl;
 	std::cout << B[2] << std::endl;
 	B = A;
+	A = A;
 	std::cout << B[2] << std::endl;
 	try
 	{
