@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:52:35 by njaros            #+#    #+#             */
-/*   Updated: 2022/08/25 14:12:53 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/09/08 09:51:53 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,21 @@ class Array
 	public :
 
 		Array(void) : _array(0), _size(0) {}
-		Array(unsigned int n) : _size(n)
+		Array(const unsigned int n) : _size(n)
 		{
             if (n)
 			    this->_array = new T[n];
+			else
+				this->_array = 0;
 		}
 		Array(Array const &other) { *this = other; }
-		~Array( void ) { delete []this->_array; }
+		~Array( void ) {
+			if (_array)
+			{
+				delete []this->_array;
+				_array = 0;
+			}
+		}
 
 		Array	&operator=( Array const &other )
 		{
@@ -37,10 +45,11 @@ class Array
 			if (&other == this)
 				return (*this);
             delete []this->_array;
-            this->_array = NULL;
 			this->_size = other.size();
             if (this->_size)
 			    this->_array = new T[this->_size];
+            else
+                this->_array = NULL;
 			while (++idx < this->_size)
 				this->_array[idx] = other[idx];
 			return (*this);
@@ -52,7 +61,7 @@ class Array
                 char const	*what( void ) const throw() { return ("This index is out of border."); }
         };
 
-		T	&operator[]( unsigned int idx )
+		T	&operator[]( const unsigned int idx )
 		{
 			if (idx >= this->_size)
 			{
@@ -61,7 +70,7 @@ class Array
 			return (this->_array[idx]);
 		}
 
-		const T	&operator[]( unsigned int idx )	const
+		const T	&operator[]( const unsigned int idx )	const
 		{
 			if (idx >= this->_size)
 			{
