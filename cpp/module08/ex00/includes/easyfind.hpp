@@ -18,12 +18,12 @@
 # include <exception>
 
 template < typename T >
-int easyfind(T &cont, int n) //Only works whit containers !!
+int easyfind(const T &cont, const int n) //Only works with containers !!
 {
 	int	idx = -1;
-	typename T::iterator it = cont.begin();
+	typename T::const_iterator it = cont.cbegin();
 	--it;
-	while (++it != cont.end())
+	while (++it != cont.cend())
 	{
 		idx++;
 		if (*it == n)

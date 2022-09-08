@@ -48,6 +48,14 @@ class	MutantStack : public std::stack<T>
 		{
 			return (this->c.end());
 		}
+        const_iterator  cbegin()    const
+        {
+            return (this->c.cbegin());
+        }
+        const_iterator  cend()  const
+        {
+            return (this->c.cend());
+        }
 	
 		
 };

@@ -44,15 +44,28 @@ int	main()
 
 	while (it != test.end())
 	{
-
+        *it += " un hibou";
 		std::cout << *it << " | ";
 		it++;
 	}
+    std::cout << std::endl;
+    while (it != test.begin())
+    {
+        --it;
+        *it += " reverse";
+        std::cout << *it << " | ";
+    }
 	std::cout << "\n\n <--------- const_iterator test --------->\n\n";
-	
+
+    const MutantStack<std::string> &constTest = test;
+
 	MutantStack<std::string>::const_iterator constIt;
-	constIt = test.begin() + 1;
-	std::cout << *constIt;
+    constIt = constTest.cbegin();
+    while (constIt != constTest.cend())
+    {
+        std::cout << *constIt << " | ";
+        constIt++;
+    }
 	std::cout << "\n\n <--------- other iterator tests --------->\n\n";
 
 	MutantStack<pixel>	pixelStack;

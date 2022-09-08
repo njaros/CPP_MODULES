@@ -34,11 +34,12 @@ int main(int ac, char **av)
 		std::cerr << e << '\n';
 	}
 
-	std::list<int> lst;
-	lst.push_back(1);
-	lst.push_back(2);
-	lst.push_back(1);
-	lst.push_back(-8);
+    std::list<int> lstA;
+	lstA.push_back(1);
+	lstA.push_back(2);
+	lstA.push_back(1);
+	lstA.push_back(-8);
+    const std::list<int> &lst = lstA;
 	std::cout << std::endl << "list test : " << std::endl;
 	try
 	{
